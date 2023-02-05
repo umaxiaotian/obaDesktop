@@ -113,11 +113,11 @@
   animation: blink 1s step-start 0s infinite;
 }
 
-/* @keyframes blink {
+@keyframes blink {
   50% {
     opacity: 0;
   }
-} */
+}
 </style>
 <script>
 import VueResizable from 'vue-resizable'
