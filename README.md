@@ -1,10 +1,14 @@
-# Nuxt 3 Minimal Starter
+# obaDesktop
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+obaDesktopはウェブ上で動作するデスクトップシステムです。
+バックエンドAPIと通信して、ファイルマネージャーやサーバー管理ができることを目的としています。
 
-## Setup
+![image](https://user-images.githubusercontent.com/29545778/216829508-b8967849-dc26-4d46-82a9-08c423268447.png)
 
-Make sure to install the dependencies:
+
+## セットアップ
+
+必要なパッケージ群をインスコ
 
 ```bash
 # yarn
@@ -17,26 +21,10 @@ npm install
 pnpm install
 ```
 
-## Development Server
-
-Start the development server on http://localhost:3000
+## 起動する
 
 ```bash
-npm run dev
+# yarn
+yarn 
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
