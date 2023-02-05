@@ -1,0 +1,157 @@
+
+<template>
+    <div class="glass_bar">
+        <div class="d-flex flex-column flex-shrink-0 " style="width: 4.5rem;">
+            <a href="/" class="d-block p-3 link-dark text-decoration-none " title="" data-bs-toggle="tooltip"
+                data-bs-placement="right" data-bs-original-title="スタート">
+                <i class="bi bi-windows" style="font-size: 2.5rem; color: #009eff;"></i>
+
+            </a>
+            <div class="nav nav-pills nav-flush flex-column mb-auto text-center">
+                <li v-for="menu in menuList">
+                    <a class='nav-link py-3  ' :class="{ 'active': menu.isActive === true }"
+                        @click="menuClickFunc(menu.funcName)" data-bs-toggle="tooltip" data-bs-placement="right"
+                        :title="menu.toolTipText">
+                        <i :class="menu.iconClass" style="font-size: 1.9rem; color: #ffff;"></i>
+                    </a>
+                </li>
+            </div>
+            <div class="dropdown border-top">
+                <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none "
+                    id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="@/assets/image/avater.png" alt="mdo" width="45" height="45"
+                        style="background-color: white;" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small shadow " aria-labelledby="dropdownUser3">
+                    <li><a class="dropdown-item" href="#">プロフィール編集</a></li>
+                    <li><a class="dropdown-item" href="#">設定</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">ログアウト</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+.nav-link:hover {
+    background-color: #3598c2;
+}
+
+.nav-link.active {
+    background-color: #174051;
+}
+
+.glass_bar {
+
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 5;
+    /* padding: 1rem;   nav太くする用 */
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+
+
+
+
+
+
+
+
+.box {
+    color: #2D3240;
+    overflow-y: scroll;
+    font-size: 23px;
+}
+
+.box::-webkit-scrollbar {
+    width: 14px;
+}
+
+.box::-webkit-scrollbar-track {
+    background-color: #000;
+    border-radius: 10px;
+}
+
+.box::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(135deg, #3C8CE7 10%, #00EAFF 100%);
+    border-radius: 10px;
+}
+</style>
+
+<script>
+import "bootstrap/dist/js/bootstrap.min.js";
+import { Tooltip } from 'bootstrap/dist/js/bootstrap.esm.min.js'
+
+
+
+export default {
+    name: "MainBar",
+    //v-model処理
+    props: {
+        modelValue: String // 以前は `value:String` でした
+    },
+    emits: ['update:modelValue'],
+
+    data() {
+        return {
+            menuList: {
+                'test': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
+                'open': { iconClass: 'bi bi-cloud-arrow-up', isActive: false, funcName: 'openEditorInfo', toolTipText: "エディター情報からデータをアップロードします。" },
+                'openFileManager': { iconClass: 'bi bi-card-list', isActive: false, funcName: 'openFileManager', toolTipText: "ファイルマネージャーを表示します。" }
+            },
+            dialog: false,
+            editor: this.modelValue
+        }
+    },
+
+    mounted() {
+        //inti tooltip
+        Array.from(document.querySelectorAll('a[data-bs-toggle="tooltip"]'))
+            .forEach(tooltipNode => new Tooltip(tooltipNode))
+    },
+
+    methods: {
+        menuClickFunc(event) {
+            var state = {}
+            switch (event) {
+                //SaveEvent発火
+                case 'saveEditorInfo':
+                    console.log(this.editor)
+                    state = JSON.stringify(this.editor.save());
+                    console.log(state);
+                    this.menuList.test.isActive = true;
+                    break
+                case 'openEditorInfo':
+                    state = { "nodes": [{ "type": "DataCopyNode", "id": "node_16749225934986", "name": "DataCopy", "options": [["ValueText", null], ["ローカルファイルパス", "/tmp/sample.txt"], ["アップロード先パス", "/tmp"], ["CHMOD", "775"], ["ファイル所有者名", "xiaotian"]], "state": {}, "interfaces": [["TASK(IN)", { "id": "ni_167492793152321", "value": "" }], ["TASK(OUT)", { "id": "ni_167492793152322", "value": [{ "Type": "TASK", "DataType": "DataCopy", "Param": { "LocalFilePath": "/tmp/sample.txt", "UploadFilePath": "/tmp", "Permission": "775", "Owner": "xiaotian" } }] }]], "position": { "x": 176, "y": 335 }, "width": 200, "twoColumn": false, "customClasses": "" }, { "type": "DataCopyNode", "id": "node_16749227984417", "name": "DataCopy", "options": [["ValueText", null], ["ローカルファイルパス", "/tmp/sample.txt2"], ["アップロード先パス", "/tmp"], ["CHMOD", "777"], ["ファイル所有者名", "xiaotian2"]], "state": {}, "interfaces": [["TASK(IN)", { "id": "ni_167492793152324", "value": [{ "Type": "TASK", "DataType": "DataCopy", "Param": { "LocalFilePath": "/tmp/sample.txt", "UploadFilePath": "/tmp", "Permission": "775", "Owner": "xiaotian" } }] }], ["TASK(OUT)", { "id": "ni_167492793152325", "value": [{ "Type": "TASK", "DataType": "DataCopy", "Param": { "LocalFilePath": "/tmp/sample.txt", "UploadFilePath": "/tmp", "Permission": "775", "Owner": "xiaotian" } }, { "Type": "TASK", "DataType": "DataCopy", "Param": { "LocalFilePath": "/tmp/sample.txt2", "UploadFilePath": "/tmp", "Permission": "777", "Owner": "xiaotian2" } }] }]], "position": { "x": 460, "y": 361 }, "width": 200, "twoColumn": false, "customClasses": "" }, { "type": "PlayNode", "id": "node_167492675870814", "name": "PlayRuleSetting", "options": [["Play名", null], ["ユーザー切替有効", null], ["実行ユーザー名", null], ["ホスト群", null]], "state": {}, "interfaces": [["PLAY(IN)", { "id": "ni_167492675870815", "value": "" }], ["TASK(IN)", { "id": "ni_167492675870816", "value": [{ "Type": "TASK", "DataType": "DataCopy", "Param": { "LocalFilePath": "/tmp/sample.txt", "UploadFilePath": "/tmp", "Permission": "775", "Owner": "xiaotian" } }, { "Type": "TASK", "DataType": "DataCopy", "Param": { "LocalFilePath": "/tmp/sample.txt2", "UploadFilePath": "/tmp", "Permission": "777", "Owner": "xiaotian2" } }] }], ["PLAY(OUT)", { "id": "ni_167492675870817", "value": [{ "Type": "PLAY", "DataType": "PlayRule", "Param": { "PlayName": null, "UserBecome": null, "BecomeUserName": null, "Tasks": [{ "Type": "TASK", "DataType": "DataCopy", "Param": { "LocalFilePath": "/tmp/sample.txt", "UploadFilePath": "/tmp", "Permission": "775", "Owner": "xiaotian" } }, { "Type": "TASK", "DataType": "DataCopy", "Param": { "LocalFilePath": "/tmp/sample.txt2", "UploadFilePath": "/tmp", "Permission": "777", "Owner": "xiaotian2" } }] } }] }]], "position": { "x": 805, "y": 355 }, "width": 200, "twoColumn": false, "customClasses": "" }, { "type": "ExecNode", "id": "node_167496063373618", "name": "ExecNode", "options": [["OUT-MSG", "PLAY(IN)を実行"]], "state": {}, "interfaces": [["PLAY(IN)", { "id": "ni_167496063373619", "value": [{ "Type": "PLAY", "DataType": "PlayRule", "Param": { "PlayName": null, "UserBecome": null, "BecomeUserName": null, "Tasks": [{ "Type": "TASK", "DataType": "DataCopy", "Param": { "LocalFilePath": "/tmp/sample.txt", "UploadFilePath": "/tmp", "Permission": "775", "Owner": "xiaotian" } }, { "Type": "TASK", "DataType": "DataCopy", "Param": { "LocalFilePath": "/tmp/sample.txt2", "UploadFilePath": "/tmp", "Permission": "777", "Owner": "xiaotian2" } }] } }] }]], "position": { "x": 1051, "y": 347 }, "width": 200, "twoColumn": false, "customClasses": "" }], "connections": [{ "id": "167492793484436", "from": "ni_167492793152322", "to": "ni_167492793152324" }, { "id": "167492793725639", "from": "ni_167492793152325", "to": "ni_167492675870816" }, { "id": "167496063600522", "from": "ni_167492675870817", "to": "ni_167496063373619" }], "panning": { "x": -59, "y": -41 }, "scaling": 1 }
+                    this.editor.load(state);
+                    break
+                case 'openFileManager':
+                    if (!this.menuList.openFileManager.isActive) {
+                        this.dialog = true;
+
+                        this.menuList.openFileManager.isActive = true;
+                    } else {
+                        this.dialog = true;
+                        this.menuList.openFileManager.isActive = false;
+                    }
+                    break
+
+                default:
+                    console.log('INVALID EVENT!!!')
+            }
+        },
+    }
+};
+</script>
