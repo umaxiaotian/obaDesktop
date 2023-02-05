@@ -2,14 +2,8 @@
   <MainBar v-model="editor" />
   <obaWindow />
 </template>
-<style lang="scss" >
+<style >
 body {
-
-  width: 100vw;
-  height: 100vh;
-
-  background: #00b1fd;
-  background: linear-gradient(90deg, #00b1fd 0%, #0243c3 100%);
   font-family: Arial;
   font-size: 12px;
   font-weight: 400;
@@ -17,6 +11,14 @@ body {
   display: flex;
 
 
+  width: 100vw;
+  height: 100vh;
+  background-image: url("@/assets/image/wallpaperbetter.com_3840x2160.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #999;
 }
 </style>
 <script>
