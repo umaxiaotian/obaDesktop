@@ -1,6 +1,6 @@
 <template>
 
-
+<div class="display">
         <grid-layout :layout.sync="items" :col-num="cols" :max-rows="rows" :row-height="112" :is-draggable="true"
             :is-resizable="false" :is-mirrored="false" :vertical-compact="false" :margin="[2, 2]"
             :use-css-transforms="true" style="width: 100%; height: 100%;">
@@ -16,7 +16,7 @@
         <!-- <transition name="window">
     <VSCode v-show="apps.vscode.isActive"/>
 </transition> -->
-   
+   </div>
 </template>
 <script>
 import VueGridLayout from 'vue3-grid-layout'

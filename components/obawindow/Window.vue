@@ -1,5 +1,4 @@
 <template>
-  <div style="height: 95vh; width: 100wh; border: 1px solid red; position: relative;">
   <vue-resizable 
     class="terminal" 
     dragSelector=".toolbar"
@@ -14,7 +13,6 @@
     active=true
     fitParent=true
    >
-    
     <div class="toolbar">
       <div class="icon"></div>
       <div class="title">The Oba PowerShell</div>
@@ -30,9 +28,7 @@
       <p class="text space">Prueba la nueva tecnología PowerShell multiplataforma https://github.com/umaxiaotian</p>
       <p class="text">PS C:\User\umaxiaotian> <span class="cursor"></span></p>
     </div>
-
-
-  </vue-resizable></div>
+  </vue-resizable>
 </template>
 <style scoped>
 * {
@@ -40,19 +36,14 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 .terminal {
   border: 1px solid #263243;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
   display: grid;
   grid-template-rows: 30px 1fr;
 }
-
 .toolbar {
-
   background: rgba(0, 0, 0, 0.644);
-
-
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
  
@@ -62,7 +53,6 @@
   user-select: none;
   padding-left: 4px;
 }
-
 .icon {
   width: 16px;
   height: 16px;
@@ -104,10 +94,6 @@
 .container {
   background: #012456;
   overflow-y: scroll;
-
-
-
-
 }
 
 .text {

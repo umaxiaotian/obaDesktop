@@ -1,10 +1,10 @@
 <template>
- 
   <MainBar />
-  <WorkSpace />
-
+  <div style="height: 95vh; width: 100wh; border: 1px solid red; position: relative;">
+  <h1 style="position: absolute; color: red;">WORKSPACE.vue</h1>
+    <WorkSpace />
   <obaWindow />
-
+</div>
 
 </template>
 <style lang="scss" >
