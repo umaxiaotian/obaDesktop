@@ -3,20 +3,24 @@
     <div class="glass_bar content">
         <nav class="nav navbar-expand ">
             <a href="/" class="d-block p-3 link-dark " data-bs-original-title="スタート">
-                <i class="bi bi-windows" style="font-size: 2.0rem; color: #009eff;"></i>
+                <i class="bi bi-windows" style="font-size: 1.5rem; color: #009eff;"></i>
             </a>
             <div class="navigation">
                 <li v-for="menu in menuList">
-                    <a class='nav-link py-3  ' :class="{ 'active': menu.isActive === true }"
-                        @click="menuClickFunc(menu.funcName)" data-bs-toggle="tooltip" data-bs-placement="right"
+                    <a class='nav-link'  :class="{ 'active': menu.isActive === true }"
+                        @click="menuClickFunc(menu.funcName)" data-bs-toggle="tooltip" data-bs-placement="top"
                         :title="menu.toolTipText">
-                        <i :class="menu.iconClass" style="font-size: 1.9rem; color: #ffff;"></i>
+                        <i :class="menu.iconClass" style="font-size: 1.5rem; color: #ffff;"></i>
                     </a>
                 </li>
 
             </div>
         </nav>
     </div>
+
+
+
+
 </template>
 
 <style  scoped>
@@ -58,6 +62,7 @@
     text-decoration: none;
 }
 
+
 .nav-link:hover {
     background-color: #3598c2;
 }
@@ -73,7 +78,7 @@
     z-index: 5;
     /* padding: 1rem;   nav太くする用 */
     color: white;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.589);
    
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
@@ -89,33 +94,13 @@
 
 
 
-
-.box {
-    color: #2D3240;
-    overflow-y: scroll;
-    font-size: 23px;
-}
-
-.box::-webkit-scrollbar {
-    width: 14px;
-}
-
-.box::-webkit-scrollbar-track {
-    background-color: #000;
-    border-radius: 10px;
-}
-
-.box::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(135deg, #3C8CE7 10%, #00EAFF 100%);
-    border-radius: 10px;
-}
 </style>
 
 <script>
 import "bootstrap/dist/js/bootstrap.min.js";
 import { Tooltip } from 'bootstrap/dist/js/bootstrap.esm.min.js'
 
-
+import { VueWinBox } from 'vue-winbox'
 
 export default {
     name: "MainBar",

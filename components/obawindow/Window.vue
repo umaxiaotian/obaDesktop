@@ -1,15 +1,27 @@
 <template>
-  <vue-resizable class="terminal" dragSelector=".toolbar" :top=top :left=left :width=width :height=height
-    :min-width=minWidth :min-height=minHeight @drag:start="dragStart()" @drag:end="dragEnd()"
-    @resize:start="resizeStart()" @resize:end="resizeEnd()"
-    :class="{ 'duration-100': !isDragging && !isResizing, 'minimized': isMinimized, 'rounded-md': !isMaximized }">
+  <div style="height: 95vh; width: 100wh; border: 1px solid red; position: relative;">
+  <vue-resizable 
+    class="terminal" 
+    dragSelector=".toolbar"
+    :top=top 
+    :left=left
+    :width=width 
+    :height=height
+    :maxWidth=maxWidth
+    :maxHeight=maxHeight
+    :min-width=minWidth 
+    :min-height=minHeight
+    active=true
+    fitParent=true
+   >
+    
     <div class="toolbar">
       <div class="icon"></div>
       <div class="title">The Oba PowerShell</div>
       <div class="buttons">
-        <div class="button">&#9472;</div>
-        <div class="button">&#9723;</div>
-        <div class="button close">&#10005;</div>
+        <div class="button" @click="minimize">&#9472;</div>
+        <div class="button" @click="maximize">&#9723;</div>
+        <div class="button close" @click="close">&#10005;</div>
       </div>
     </div>
     <div class="container">
@@ -20,7 +32,7 @@
     </div>
 
 
-  </vue-resizable>
+  </vue-resizable></div>
 </template>
 <style scoped>
 * {
@@ -37,7 +49,13 @@
 }
 
 .toolbar {
-  background: black;
+
+  background: rgba(0, 0, 0, 0.644);
+
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+ 
   display: grid;
   grid-template-columns: 24px 1fr 140px;
   align-items: center;
@@ -87,7 +105,7 @@
   background: #012456;
   overflow-y: scroll;
 
-  
+
 
 
 }
@@ -138,36 +156,34 @@ export default {
       isDragging: true,
       isResizing: true,
       isActive: true,
-      isMaximized: 800,
-
+      isMaximized: false,
+      maxWidth:1000,
+      maxHeight:1000
     }
   },
-
+  mounted: function () {
+        window.onresize = () => {
+            this.loadItems()
+        }
+    },
   methods: {
+    loadItems() {
+      console.log("RESIZE!!!!")
+            this.left = parseInt(window.innerWidth ) -this.width 
+            // this.maxHeight = parseInt(window.innerHeight )
+        },
+
     minimize() {
-
+      console.log("CALL MIN")
     },
-    restore() {
 
-    },
     maximize() {
-
+console.log("CALL MAX")
     },
     close() {
-
+      console.log("CALL CLOSE")
     },
-    dragStart() {
-
-    },
-    dragEnd() {
-
-    },
-    resizeStart() {
-
-    },
-    resizeEnd() {
-
-    }
+  
   }
 
 }

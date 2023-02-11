@@ -4633,6 +4633,19 @@ vue-router@^4.1.6:
   dependencies:
     "@vue/devtools-api" "^6.4.5"
 
+vue-winbox@^0.2.1:
+  version "0.2.1"
+  resolved "https://repo.huaweicloud.com/repository/npm/vue-winbox/-/vue-winbox-0.2.1.tgz#b2ee753ad1fa5165a4743c999ac865d37772b45a"
+  integrity sha512-OIwyo6BrNZJM6L4LxUYwS4rHXsc/T+PTsN3RNPs5Bvg00YBGDnTOkc7O4CO8uxKTwxeyGDHVhtIpsp7PDs77/w==
+  dependencies:
+    nanoid "^4.0.0"
+    winbox "^0.2.6"
+
+vue3-draggable-resizable@^1.6.5:
+  version "1.6.5"
+  resolved "https://repo.huaweicloud.com/repository/npm/vue3-draggable-resizable/-/vue3-draggable-resizable-1.6.5.tgz#021b2c00bff2885ab4fa5981e03bf4f56f12cdac"
+  integrity sha512-31142E31fGNnq3HKqvmFLSsqIbhck7TyGuQWhUKrDw6DOcGAuRx4ddRjaxvT6fe7dgeKH53qAh+i0ZlWtPLl2g==
+
 vue3-grid-layout@^1.0.0:
   version "1.0.0"
   resolved "https://repo.huaweicloud.com/repository/npm/vue3-grid-layout/-/vue3-grid-layout-1.0.0.tgz#f0cd9288e167cd0b681a4e55b33d91642564cfc9"
@@ -4712,6 +4725,11 @@ wide-align@^1.1.2:
   integrity sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==
   dependencies:
     string-width "^1.0.2 || 2 || 3 || 4"
+
+winbox@^0.2.6:
+  version "0.2.6"
+  resolved "https://repo.huaweicloud.com/repository/npm/winbox/-/winbox-0.2.6.tgz#9e46eb23c09394166262e5bcb074e4f240c8ba4c"
+  integrity sha512-P/Tqjcf4bA0Hr1lqR1YliQsisV8xf+t56xgCtqWN8Urw9RLonYSVQGYw+qILp9tgkPs1o7e1dsl6dskaS6GudQ==
 
 wrap-ansi@^7.0.0:
   version "7.0.0"

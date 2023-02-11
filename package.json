@@ -23,6 +23,8 @@
     "scss": "^0.2.4",
     "vue-loader": "^17.0.1",
     "vue-resizable": "^2.1.7",
+    "vue-winbox": "^0.2.1",
+    "vue3-draggable-resizable": "^1.6.5",
     "vue3-grid-layout": "^1.0.0"
   }
 }

@@ -1,7 +1,11 @@
 <template>
+ 
   <MainBar />
   <WorkSpace />
+
   <obaWindow />
+
+
 </template>
 <style lang="scss" >
 html,
@@ -18,9 +22,11 @@ body {
   background-size: cover;
   background-color: #999;
   height: 100%;
+  width: 100%;
   overflow: hidden;
   
 }
+
 
 </style>
 <script>
