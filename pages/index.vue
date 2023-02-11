@@ -1,5 +1,6 @@
 <template>
-  <MainBar v-model="editor" />
+  <MainBar />
+  <WorkSpace />
   <obaWindow />
 </template>
 <style lang="scss" >
@@ -18,7 +19,9 @@ body {
   background-color: #999;
   height: 100%;
   overflow: hidden;
+  
 }
+
 </style>
 <script>
 import MainBar from "@/components/MainBar";

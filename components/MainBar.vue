@@ -1,13 +1,11 @@
 
 <template>
-    <div class="glass_bar">
-        <div class="d-flex flex-column flex-shrink-0 " style="width: 4.5rem;">
-            <a href="/" class="d-block p-3 link-dark text-decoration-none " title="" data-bs-toggle="tooltip"
-                data-bs-placement="right" data-bs-original-title="スタート">
-                <i class="bi bi-windows" style="font-size: 2.5rem; color: #009eff;"></i>
-
+    <div class="glass_bar content">
+        <nav class="nav navbar-expand ">
+            <a href="/" class="d-block p-3 link-dark " data-bs-original-title="スタート">
+                <i class="bi bi-windows" style="font-size: 2.0rem; color: #009eff;"></i>
             </a>
-            <div class="nav nav-pills nav-flush flex-column mb-auto text-center">
+            <div class="navigation">
                 <li v-for="menu in menuList">
                     <a class='nav-link py-3  ' :class="{ 'active': menu.isActive === true }"
                         @click="menuClickFunc(menu.funcName)" data-bs-toggle="tooltip" data-bs-placement="right"
@@ -15,27 +13,51 @@
                         <i :class="menu.iconClass" style="font-size: 1.9rem; color: #ffff;"></i>
                     </a>
                 </li>
+
             </div>
-            <div class="dropdown border-top">
-                <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none "
-                    id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="@/assets/image/avater.png" alt="mdo" width="45" height="45"
-                        style="background-color: white;" class="rounded-circle">
-                </a>
-                <ul class="dropdown-menu text-small shadow " aria-labelledby="dropdownUser3">
-                    <li><a class="dropdown-item" href="#">プロフィール編集</a></li>
-                    <li><a class="dropdown-item" href="#">設定</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">ログアウト</a></li>
-                </ul>
-            </div>
-        </div>
+        </nav>
     </div>
 </template>
 
-<style scoped>
+<style  scoped>
+.content {
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+    overflow-x: auto;
+
+
+    
+}
+
+.navigation::-webkit-scrollbar {
+    width: 16px;
+}
+ 
+.navigation::-webkit-scrollbar-track {
+    background-color: #777777;
+    border-radius: 100px;
+}
+ 
+.navigation::-webkit-scrollbar-thumb {
+    background-color: #c2c2c2;
+    border-radius: 100px;
+}
+
+
+.navigation-item {
+    padding: 20px 30px;
+    color: #333;
+    word-break: keep-all;
+    text-decoration: none;
+}
+
 .nav-link:hover {
     background-color: #3598c2;
 }
@@ -47,17 +69,16 @@
 .glass_bar {
 
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    bottom: 0rem;
     z-index: 5;
     /* padding: 1rem;   nav太くする用 */
     color: white;
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
+   
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 
@@ -109,7 +130,16 @@ export default {
             menuList: {
                 'test': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
                 'open': { iconClass: 'bi bi-cloud-arrow-up', isActive: false, funcName: 'openEditorInfo', toolTipText: "エディター情報からデータをアップロードします。" },
-                'openFileManager': { iconClass: 'bi bi-card-list', isActive: false, funcName: 'openFileManager', toolTipText: "ファイルマネージャーを表示します。" }
+                'openFileManager': { iconClass: 'bi bi-card-list', isActive: false, funcName: 'openFileManager', toolTipText: "ファイルマネージャーを表示します。" },
+
+
+                'te2st1': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
+                't2est': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
+                'te3st': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
+                'tes4t': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
+                'test5': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
+                't1est': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
+                'te1st': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
             },
             dialog: false,
             editor: this.modelValue

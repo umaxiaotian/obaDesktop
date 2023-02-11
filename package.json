@@ -22,6 +22,7 @@
     "sass": "^1.58.0",
     "scss": "^0.2.4",
     "vue-loader": "^17.0.1",
-    "vue-resizable": "^2.1.7"
+    "vue-resizable": "^2.1.7",
+    "vue3-grid-layout": "^1.0.0"
   }
 }
