@@ -1,18 +1,7 @@
 <template>
-  <vue-resizable 
-    class="terminal" 
-    dragSelector=".toolbar"
-    :top=top 
-    :left=left
-    :width=width 
-    :height=height
-    :maxWidth=maxWidth
-    :maxHeight=maxHeight
-    :min-width=minWidth 
-    :min-height=minHeight
-    active=true
-    fitParent=true
-   >
+  <vue-resizable class="terminal" dragSelector=".toolbar" :top=top :left=left :width=width :height=height
+    :maxWidth=maxWidth :maxHeight=maxHeight :min-width=minWidth :min-height=minHeight :maximize=isMaximized
+    fitParent=true>
     <div class="toolbar">
       <div class="icon"></div>
       <div class="title">The Oba PowerShell</div>
@@ -36,23 +25,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .terminal {
   border: 1px solid #263243;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
   display: grid;
   grid-template-rows: 30px 1fr;
 }
+
 .toolbar {
   background: rgba(0, 0, 0, 0.644);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
- 
+
   display: grid;
   grid-template-columns: 24px 1fr 140px;
   align-items: center;
   user-select: none;
   padding-left: 4px;
 }
+
 .icon {
   width: 16px;
   height: 16px;
@@ -143,33 +135,38 @@ export default {
       isResizing: true,
       isActive: true,
       isMaximized: false,
-      maxWidth:1000,
-      maxHeight:1000
+      maxWidth: 1000,
+      maxHeight: 1000
     }
   },
   mounted: function () {
-        window.onresize = () => {
-            this.loadItems()
-        }
-    },
+    window.onresize = () => {
+      this.loadItems()
+    }
+  },
   methods: {
     loadItems() {
       console.log("RESIZE!!!!")
-            this.left = parseInt(window.innerWidth ) -this.width 
-            // this.maxHeight = parseInt(window.innerHeight )
-        },
+      this.left = parseInt(window.innerWidth) - this.width
+      // this.maxHeight = parseInt(window.innerHeight )
+    },
 
     minimize() {
       console.log("CALL MIN")
     },
 
     maximize() {
-console.log("CALL MAX")
+      console.log("CALL MAX")
+      if(this.isMaximized){
+      this.isMaximized = false
+      }else{
+        this.isMaximized = true
+      }
     },
     close() {
       console.log("CALL CLOSE")
     },
-  
+
   }
 
 }

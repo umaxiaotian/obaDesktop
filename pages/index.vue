@@ -1,9 +1,14 @@
 <template>
   <MainBar />
   <div style="height: 95vh; width: 100wh; border: 1px solid red; position: relative;">
-  <h1 style="position: absolute; color: red;">WORKSPACE.vue</h1>
-    <WorkSpace />
-  <obaWindow />
+  
+  <div  style="position: absolute; color: red;">
+    <h1>index.vue LOCAL_STYLE</h1>
+   <h5>height: 95vh; width: 100wh</h5> 
+   </div>
+   <WorkSpace />
+  <WindowPS style="position: absolute;" />
+  <WindowDashBoard  style="position: absolute;" />
 </div>
 
 </template>
@@ -31,9 +36,8 @@ body {
 </style>
 <script>
 import MainBar from "@/components/MainBar";
-import obaWindow from "@/components/obawindow/Window.vue"
 export default {
-  components: { obaWindow },
+
 }
 </script>
   
