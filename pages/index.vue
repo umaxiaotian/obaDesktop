@@ -24,7 +24,7 @@
     :windowId=index
     v-model:title=item.title
       :windowInnerWidth="windowInnerWidth" style="position: absolute;"
-      :style="(activeWindowId === index) ? 'z-index:100' : 'z-index:'+index "
+      :style="(activeWindowId === index) ? 'z-index:100' : 'z-index:1' "
        @clickWindow="activeWindow"
        @clickDestroy="destroyWindow"
        >
@@ -43,7 +43,7 @@ body {
   font-size: 12px;
   color: white;
   //  デスクトップ定義
-  background-image: url("@/assets/image/202300834-Onimai-PC-Wallpaper.jpg");
+  background-image: url("@/assets/image/221226a.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
