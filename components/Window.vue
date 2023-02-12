@@ -13,8 +13,9 @@
     :fitParent=true
     @drag:end="endDrag"
     @resize:end="endResize"
+    @mousedown="activeMouse"
     >
-    <div class="toolbar" @mousedown="activeMouse">
+    <div class="toolbar" >
       <div class="icon"></div>
       <div class="title">{{titleData}}</div>
       <div class="buttons">
