@@ -70,8 +70,8 @@ export default {
       activeWindowId: 0,
       windowItem: {
         0: {
-          top: 20,
-          left: 300,
+          top: 400,
+          left: 600,
           width: 700,
           height: 200,
           minWidth: 500,
