@@ -2,18 +2,19 @@
 <template>
     <div class="glass_bar content">
         <nav class="nav navbar-expand ">
-            <a href="/" class="d-block p-3 link-dark " data-bs-original-title="スタート">
-                <i class="bi bi-windows" style="font-size: 1.5rem; color: #009eff;"></i>
+            <a href="/" class="d-block p-3 link-dark " title="スタート" data-bs-toggle="tooltip"  data-bs-placement="top" >
+                <img :src="`/icons/widget.png`" width="35" height="35" class="rounded mx-auto d-block">
             </a>
             <div class="navigation">
                 <li v-for="menu in menuList">
-                    <a class='nav-link'  :class="{ 'active': menu.isActive === true }"
-                        @click="menuClickFunc(menu.funcName)" data-bs-toggle="tooltip" data-bs-placement="top"
-                        :title="menu.toolTipText">
+                    <a   data-bs-toggle="tooltip" 
+                    data-bs-placement="top" class='nav-link'  
+                    :class="{ 'active': menu.isActive === true }"
+                    @click="menuClickFunc(menu.funcName)"
+                  
+                    :title="menu.toolTipText">
                         <!-- <i :class="menu.iconSrc" style="font-size: 1.5rem; color: #ffff;"></i> -->
-                   
                         <img :src="`/icons/${menu.iconSrc}.png`" width="35" height="35" class="rounded mx-auto d-block">
-                   
                     </a>
                 </li>
 
@@ -114,14 +115,14 @@ export default {
     data() {
         return {
             menuList: {
-                'test': { iconSrc: 'edge', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
+           
                 'open': { iconSrc: 'computer', isActive: false, funcName: 'openEditorInfo', toolTipText: "エディター情報からデータをアップロードします。" },
                 'openFileManager': { iconSrc: 'mail', isActive: false, funcName: 'openFileManager', toolTipText: "ファイルマネージャーを表示します。" },
 
 
                 'te2st1': { iconSrc: 'photos', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
                 't2est': { iconSrc: 'onenote', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
-      
+           'test': { iconSrc: 'edge', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
             },
             dialog: false,
             editor: this.modelValue
