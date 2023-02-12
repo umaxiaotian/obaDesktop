@@ -68,6 +68,7 @@
 }
 </style>
   <script>
+import "bootstrap/dist/js/bootstrap.bundle.min.js"
     export default {
       data: () => ({
         cards: ['Today', 'Yesterday'],

@@ -2,7 +2,7 @@
   <vue-resizable class="terminal" dragSelector=".toolbar" :top=top :left=left :width=width :height=height
     :maxWidth=maxWidth :maxHeight=maxHeight :min-width=minWidth :min-height=minHeight :maximize=isMaximized
     fitParent=true>
-    <div class="toolbar">
+    <div class="toolbar" @mousedown="activeMouse">
       <div class="icon"></div>
       <div class="title">oNasWindowComponents</div>
       <div class="buttons">
@@ -115,7 +115,9 @@ export default {
     minimize() {
       console.log("CALL MIN")
     },
-
+    activeMouse(){
+      console.log("MouseOver")
+    },
     maximize() {
       console.log("CALL MAX")
       if(this.isMaximized){

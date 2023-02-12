@@ -7,7 +7,7 @@
             <grid-item v-for="item in items" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i"
                 style="touch-action: none;">
                 <div class="text-center">
-                    <img src="@/assets/icons/explorer.png" width="43" height="43"><br>
+                    <img src="/icons/explorer.png" width="43" height="43"><br>
                     <span class="text-white text-xs text-center app-name">{{ item.label }}</span>
                 </div>
             </grid-item>

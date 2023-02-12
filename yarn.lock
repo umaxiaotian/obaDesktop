@@ -2937,11 +2937,6 @@ make-dir@^3.1.0, make-dir@~3.1.0:
   dependencies:
     semver "^6.0.0"
 
-mdi@^2.2.43:
-  version "2.2.43"
-  resolved "https://repo.huaweicloud.com/repository/npm/mdi/-/mdi-2.2.43.tgz#c5e419a6e5f48c82c7109328f52530fd187a0ec0"
-  integrity sha512-g3m6z4303qieltUM20JL2gdsJZvoVzIzO74qa2XxZ2kg9JPwrPEAgooVhRDHZi1vvRh0gB8Dg+c9XqNdz4jcIg==
-
 mdn-data@2.0.14:
   version "2.0.14"
   resolved "https://repo.huaweicloud.com/repository/npm/mdn-data/-/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"
@@ -4674,11 +4669,6 @@ vue@^3.2.47:
     "@vue/runtime-dom" "3.2.47"
     "@vue/server-renderer" "3.2.47"
     "@vue/shared" "3.2.47"
-
-vuetify@^3.1.4:
-  version "3.1.4"
-  resolved "https://repo.huaweicloud.com/repository/npm/vuetify/-/vuetify-3.1.4.tgz#ce4a3ba5fa35184c3d92147b9603ac56158243e1"
-  integrity sha512-6ERm2a0bJyMLjmRKTifN501o3MsCVp9agtoZsORw1b3X29ycTdXOJdRMEADaDSv59dBWwUVv3WqHcWzCG4Gwfw==
 
 wcwidth@^1.0.1:
   version "1.0.1"

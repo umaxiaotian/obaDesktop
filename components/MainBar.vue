@@ -10,7 +10,10 @@
                     <a class='nav-link'  :class="{ 'active': menu.isActive === true }"
                         @click="menuClickFunc(menu.funcName)" data-bs-toggle="tooltip" data-bs-placement="top"
                         :title="menu.toolTipText">
-                        <i :class="menu.iconClass" style="font-size: 1.5rem; color: #ffff;"></i>
+                        <!-- <i :class="menu.iconSrc" style="font-size: 1.5rem; color: #ffff;"></i> -->
+                   
+                        <img :src="`/icons/${menu.iconSrc}.png`" width="35" height="35" class="rounded mx-auto d-block">
+                   
                     </a>
                 </li>
 
@@ -100,8 +103,6 @@
 import "bootstrap/dist/js/bootstrap.min.js";
 import { Tooltip } from 'bootstrap/dist/js/bootstrap.esm.min.js'
 
-import { VueWinBox } from 'vue-winbox'
-
 export default {
     name: "MainBar",
     //v-model処理
@@ -113,18 +114,14 @@ export default {
     data() {
         return {
             menuList: {
-                'test': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
-                'open': { iconClass: 'bi bi-cloud-arrow-up', isActive: false, funcName: 'openEditorInfo', toolTipText: "エディター情報からデータをアップロードします。" },
-                'openFileManager': { iconClass: 'bi bi-card-list', isActive: false, funcName: 'openFileManager', toolTipText: "ファイルマネージャーを表示します。" },
+                'test': { iconSrc: 'edge', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
+                'open': { iconSrc: 'computer', isActive: false, funcName: 'openEditorInfo', toolTipText: "エディター情報からデータをアップロードします。" },
+                'openFileManager': { iconSrc: 'mail', isActive: false, funcName: 'openFileManager', toolTipText: "ファイルマネージャーを表示します。" },
 
 
-                'te2st1': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
-                't2est': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
-                'te3st': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
-                'tes4t': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
-                'test5': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
-                't1est': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
-                'te1st': { iconClass: 'bi bi-cloud-download', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
+                'te2st1': { iconSrc: 'photos', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
+                't2est': { iconSrc: 'onenote', isActive: false, funcName: 'saveEditorInfo', toolTipText: "エディター情報からデータをダウンロードします。" },
+      
             },
             dialog: false,
             editor: this.modelValue

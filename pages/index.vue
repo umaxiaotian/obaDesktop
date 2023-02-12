@@ -10,7 +10,7 @@
    <WorkSpace />
  
    <Window   style="position: absolute; z-index: 1">
-       <AppsDashboard /> 
+    <AppsBoot/> 
     </Window>
     <Window   style="position: absolute; z-index: 11">
        <AppsBoot/> 
@@ -28,7 +28,7 @@ body {
   font-size: 12px;
   color: white;
 //  デスクトップ定義
-  background-image: url("@/assets/image/wallpaperbetter.com_3840x2160.jpg");
+  background-image: url("@/assets/image/85646.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
