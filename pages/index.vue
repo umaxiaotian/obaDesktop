@@ -13,7 +13,7 @@
    :top=20
       :left=100
       :width=700
-      :height=700
+      :height=200
       :minWidth=500
       :minHeight=500
       :isDragging=true
@@ -22,16 +22,20 @@
       :isMaximized=false
       :maxWidth=1000
       :maxHeight=1000 
+      :windowId=1
       title="window1"
       :windowInnerWidth="windowInnerWidth"
-   style="position: absolute; z-index: 1">
+   style="position: absolute;"
+   :style="(activeWindowId === 1) ? 'z-index:100' : 'z-index-1'"
+   @clickWindow="activeWindow"
+   >
     <AppsBoot/> 
     </Window>
     <Window   
     :top=20
-      :left=100
+      :left=900
       :width=700
-      :height=700
+      :height=200
       :minWidth=500
       :minHeight=500
       :isDragging=true
@@ -40,9 +44,13 @@
       :isMaximized=false
       :maxWidth=1000
       :maxHeight=1000 
+      :windowId=2
       title="window2"
       :windowInnerWidth="windowInnerWidth"
-      style="position: absolute; z-index: 1">
+      style="position: absolute;"
+      :style="(activeWindowId === 2) ? 'z-index:100' : 'z-index-1'"
+      @clickWindow="activeWindow"
+      >
        <AppsBoot/> 
     </Window>
  
@@ -79,7 +87,10 @@ import MainBar from "@/components/MainBar";
 export default {
   data(){
     return{
-      windowInnerWidth:0
+      windowInnerWidth:0,
+      activeWindowId:0
+
+      
     }
   },
   mounted: function () {
@@ -91,9 +102,14 @@ export default {
   methods: {
     loadItems() {
    
-       this.windowInnerWidth = parseInt(window.innerWidth) 
+       this.windowInnerWidth = window.innerWidth
       //  console.log(this.windowInnerWidth)
     },
+    activeWindow(data){
+      console.log(data)
+      this.activeWindowId=data;
+
+    }
   }
 
 }

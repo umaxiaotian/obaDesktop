@@ -5,7 +5,11 @@
    :top=topData
    :left=leftData 
    :width=widthData :height=heightData
-    :maxWidth=maxWidthData :maxHeight=maxHeightData :min-width=minWidthData :min-height=minHeightData :maximize=isMaximizedData
+    :maxWidth=maxWidthData
+     :maxHeight=maxHeightData
+      :min-width=minWidthData 
+      :min-height=minHeightData 
+      :maximize=isMaximizedData
     :fitParent=true
     @drag:end="endDrag"
     @resize:end="endResize"
@@ -147,10 +151,13 @@ export default {
    },
    windowInnerWidth:{
     type: Number
+   },
+   windowId:{
+    type: Number
    }
  },
 //  emits: ['update:top'],
- emits: ['update:left'],
+//  emits: ['update:left'],
 //  emits: ['update:width'],
 //  emits: ['update:height'],
 //  emits: ['update:minWidth'],
@@ -176,7 +183,8 @@ export default {
       maxWidthData:this.maxWidth,
       maxHeightData:this.maxHeight,
       titleData:this.title,
-      windowInnerWidthData:this.windowInnerWidth
+      windowInnerWidthData:this.windowInnerWidth,
+      windowIdData:this.windowId
     }
   },
   
@@ -196,7 +204,7 @@ export default {
     endDrag(data){
       console.log(data)
       this.leftData = data.left
-      
+
       // console.log(this.resizeLeft)
     },
     endResize(data){
@@ -207,14 +215,17 @@ export default {
       console.log("CALL MIN")
     },
     activeMouse(){
-      console.log("MouseOver")
+
+
+      this.$emit("clickWindow", this.windowIdData);
+
     },
     maximize() {
       console.log("CALL MAX")
-      if(this.isMaximized){
-      this.isMaximized = false
+      if(this.isMaximizedData){
+      this.isMaximizedData = false
       }else{
-        this.isMaximized = true
+        this.isMaximizedData = true
       }
     },
     close() {

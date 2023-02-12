@@ -7,7 +7,7 @@
             <grid-item v-for="item in items" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i"
                 style="touch-action: none;">
                 <div class="text-center">
-                    <img src="/icons/explorer.png" width="43" height="43"><br>
+                    <img :src="`/icons/${item.icon}.png`" width="43" height="43"><br>
                     <span class="text-white text-xs text-center app-name">{{ item.label }}</span>
                 </div>
             </grid-item>
@@ -51,7 +51,7 @@ export default {
                 { label: 'This PC', icon: 'computer' },
                 { label: 'Recycle Bin', icon: 'trash-empty' },
                 { label: 'File Explorer', icon: 'explorer' },
-                { label: 'Microsoft Store', icon: 'store-' + this.iconTheme },
+                { label: 'Microsoft Store', icon: 'github' },
                 { label: 'Microsoft Edge', icon: 'edge' }
             ]
             for (let i = 0; i < items.length; i++) {
