@@ -7,13 +7,21 @@
    <h5>height: 95vh; width: 100wh</h5> 
    </div>
    <WorkSpace />
-  <WindowPS style="position: absolute;" />
-  <WindowDashBoard  style="position: absolute;" />
+  <Window style="position: absolute;" >
+    <p class="text">The Oba PowerShell</p>
+      <p class="text space">Copyright (C) UMAXIAOTIAN Corporation. Todos los derechos reservados.</p>
+      <p class="text space">Prueba la nueva tecnología PowerShell multiplataforma https://github.com/umaxiaotian</p>
+      <p class="text">PS C:\User\umaxiaotian> <span class="cursor"></span></p>
+    </Window>
+    <Window style="position: absolute;" >
+        <AppsDashboard />
+    </Window>
 </div>
 
 </template>
 <style lang="scss" >
 html,
+
 body {
   // Powershell定義
   font-family: Arial;

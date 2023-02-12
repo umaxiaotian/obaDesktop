@@ -4,7 +4,7 @@
     fitParent=true>
     <div class="toolbar">
       <div class="icon"></div>
-      <div class="title">The Oba PowerShell</div>
+      <div class="title">oNasWindowComponents</div>
       <div class="buttons">
         <div class="button" @click="minimize">&#9472;</div>
         <div class="button" @click="maximize">&#9723;</div>
@@ -12,10 +12,7 @@
       </div>
     </div>
     <div class="container">
-      <p class="text">The Oba PowerShell</p>
-      <p class="text space">Copyright (C) UMAXIAOTIAN Corporation. Todos los derechos reservados.</p>
-      <p class="text space">Prueba la nueva tecnología PowerShell multiplataforma https://github.com/umaxiaotian</p>
-      <p class="text">PS C:\User\umaxiaotian> <span class="cursor"></span></p>
+    <slot />
     </div>
   </vue-resizable>
 </template>
@@ -68,11 +65,11 @@
 }
 
 .button:hover {
-  background: #1a1a1a;
+  background: #858585;
 }
 
 .button:active {
-  background: #353535;
+  background: #5f5f5f;
 }
 
 .close:hover {
@@ -86,37 +83,6 @@
 .container {
   background: #012456;
   overflow-y: scroll;
-}
-
-.text {
-  font-family: Monospace;
-  cursor: default;
-  font-size: 12px;
-  color: white;
-}
-
-.text::selection {
-  background: rgba(254, 219, 169, 0.99);
-  color: #11123f;
-}
-
-.space {
-  margin-bottom: 20px;
-}
-
-.cursor {
-  width: 7px;
-  height: 4px;
-  background: #fedba9;
-  margin-left: 2px;
-  display: inline-block;
-  animation: blink 1s step-start 0s infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
 }
 </style>
 <script>
