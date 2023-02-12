@@ -1,21 +1,21 @@
 <template>
+  
   <MainBar />
   <div style="height: 95vh; width: 100wh; border: 1px solid red; position: relative;">
   
   <div  style="position: absolute; color: red;">
     <h1>index.vue LOCAL_STYLE</h1>
    <h5>height: 95vh; width: 100wh</h5> 
-   </div>
+   </div> 
    <WorkSpace />
-  <Window style="position: absolute;" >
-    <p class="text">The Oba PowerShell</p>
-      <p class="text space">Copyright (C) UMAXIAOTIAN Corporation. Todos los derechos reservados.</p>
-      <p class="text space">Prueba la nueva tecnología PowerShell multiplataforma https://github.com/umaxiaotian</p>
-      <p class="text">PS C:\User\umaxiaotian> <span class="cursor"></span></p>
+ 
+   <Window   style="position: absolute; z-index: 1">
+       <AppsDashboard /> 
     </Window>
-    <Window style="position: absolute;" >
-        <AppsDashboard />
+    <Window   style="position: absolute; z-index: 11">
+       <AppsBoot/> 
     </Window>
+ 
 </div>
 
 </template>
@@ -39,8 +39,10 @@ body {
   overflow: hidden;
   
 }
-
-
+// vuetifyをウィンドウ内に収める
+.v-application__wrap{
+    min-height:100%
+}
 </style>
 <script>
 import MainBar from "@/components/MainBar";

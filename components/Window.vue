@@ -11,9 +11,7 @@
         <div class="button close" @click="close">&#10005;</div>
       </div>
     </div>
-    <div class="container">
     <slot />
-    </div>
   </vue-resizable>
 </template>
 <style scoped>
@@ -80,10 +78,7 @@
   background: #8b0a14;
 }
 
-.container {
-  background: #012456;
-  overflow-y: scroll;
-}
+
 </style>
 <script>
 import VueResizable from 'vue-resizable'
