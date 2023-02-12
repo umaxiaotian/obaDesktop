@@ -1,9 +1,8 @@
-
 <template>
     <div class="glass_bar content">
         <nav class="nav navbar-expand ">
             <a href="/" class="d-block p-3 link-dark " title="スタート" data-bs-toggle="tooltip"  data-bs-placement="top" >
-                <img :src="`/icons/widget.png`" width="35" height="35" class="rounded mx-auto d-block">
+                <img :src="`/icons/widget.png`" width="26" height="26" class="rounded mx-auto d-block">
             </a>
             <div class="navigation">
                 <li v-for="menu in menuList">
@@ -14,17 +13,13 @@
                   
                     :title="menu.toolTipText">
                         <!-- <i :class="menu.iconSrc" style="font-size: 1.5rem; color: #ffff;"></i> -->
-                        <img :src="`/icons/${menu.iconSrc}.png`" width="35" height="35" class="rounded mx-auto d-block">
+                        <img :src="`/icons/${menu.iconSrc}.png`" width="26" height="26" class="rounded mx-auto d-block">
                     </a>
                 </li>
 
             </div>
         </nav>
     </div>
-
-
-
-
 </template>
 
 <style  scoped>

@@ -84,20 +84,59 @@
 import VueResizable from 'vue-resizable'
 export default {
   components: { VueResizable },
+  props: {
+   top: {
+     type: Number,
+     //required: true,
+   },
+   left: {
+     type: Number,
+     //required: true,
+   },
+   width: {
+     type: Number,
+     //required: true,
+   },
+   height: {
+     type: Number,
+     //required: true,
+   },
+   minWidth: {
+     type: Number,
+     //required: true,
+   },
+   minHeight: {
+     type: Number,
+     //required: true,
+   },
+   isDragging: {
+     type: Boolean,
+     //required: true,
+   },
+   isResizing: {
+     type: Boolean,
+     //required: true,
+   },
+   isActive: {
+     type: Boolean,
+     //required: true,
+   },
+   isMaximized: {
+     type: Boolean,
+     //required: true,
+   },
+   maxWidth: {
+     type: Number,
+     //required: true,
+   },
+   maxHeight: {
+     type: Number,
+     //required: true,
+   },
+ },
   data() {
     return {
-      top: 20,
-      left: 100,
-      width: 700,
-      height: 700,
-      minWidth: 500,
-      minHeight: 500,
-      isDragging: true,
-      isResizing: true,
-      isActive: true,
-      isMaximized: false,
-      maxWidth: 1000,
-      maxHeight: 1000
+   
     }
   },
   mounted: function () {

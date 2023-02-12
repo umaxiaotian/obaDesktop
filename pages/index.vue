@@ -9,10 +9,38 @@
    </div> 
    <WorkSpace />
  
-   <Window   style="position: absolute; z-index: 1">
+   <Window 
+   :top=20
+      :left=900
+      :width=800
+      :height=800
+      :minWidth=500
+      :minHeight=500
+      :isDragging=true
+      :isResizing=true
+      :isActive=true
+      :isMaximized=false
+      :maxWidth=1000
+      :maxHeight=1000 
+
+   style="position: absolute; z-index: 1">
     <AppsBoot/> 
     </Window>
-    <Window   style="position: absolute; z-index: 11">
+    <Window   
+    :top=20
+      :left=100
+      :width=700
+      :height=700
+      :minWidth=500
+      :minHeight=500
+      :isDragging=true
+      :isResizing=true
+      :isActive=true
+      :isMaximized=false
+      :maxWidth=1000
+      :maxHeight=1000 
+      
+      style="position: absolute; z-index: 11">
        <AppsBoot/> 
     </Window>
  
