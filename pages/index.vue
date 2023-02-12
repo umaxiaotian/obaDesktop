@@ -11,9 +11,9 @@
  
    <Window 
    :top=20
-      :left=900
-      :width=800
-      :height=800
+      :left=100
+      :width=700
+      :height=700
       :minWidth=500
       :minHeight=500
       :isDragging=true
@@ -22,7 +22,8 @@
       :isMaximized=false
       :maxWidth=1000
       :maxHeight=1000 
-
+      title="window1"
+      :windowInnerWidth="windowInnerWidth"
    style="position: absolute; z-index: 1">
     <AppsBoot/> 
     </Window>
@@ -39,8 +40,9 @@
       :isMaximized=false
       :maxWidth=1000
       :maxHeight=1000 
-      
-      style="position: absolute; z-index: 11">
+      title="window2"
+      :windowInnerWidth="windowInnerWidth"
+      style="position: absolute; z-index: 1">
        <AppsBoot/> 
     </Window>
  
@@ -75,6 +77,24 @@ body {
 <script>
 import MainBar from "@/components/MainBar";
 export default {
+  data(){
+    return{
+      windowInnerWidth:0
+    }
+  },
+  mounted: function () {
+    window.onresize = () => {
+      this.loadItems()
+    }
+  },
+
+  methods: {
+    loadItems() {
+   
+       this.windowInnerWidth = parseInt(window.innerWidth) 
+      //  console.log(this.windowInnerWidth)
+    },
+  }
 
 }
 </script>

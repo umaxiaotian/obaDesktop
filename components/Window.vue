@@ -1,10 +1,18 @@
 <template>
-  <vue-resizable class="terminal" dragSelector=".toolbar" :top=top :left=left :width=width :height=height
-    :maxWidth=maxWidth :maxHeight=maxHeight :min-width=minWidth :min-height=minHeight :maximize=isMaximized
-    fitParent=true>
+  <vue-resizable
+   class="terminal" 
+   dragSelector=".toolbar" 
+   :top=topData
+   :left=leftData 
+   :width=widthData :height=heightData
+    :maxWidth=maxWidthData :maxHeight=maxHeightData :min-width=minWidthData :min-height=minHeightData :maximize=isMaximizedData
+    :fitParent=true
+    @drag:end="endDrag"
+    @resize:end="endResize"
+    >
     <div class="toolbar" @mousedown="activeMouse">
       <div class="icon"></div>
-      <div class="title">oNasWindowComponents</div>
+      <div class="title">{{titleData}}</div>
       <div class="buttons">
         <div class="button" @click="minimize">&#9472;</div>
         <div class="button" @click="maximize">&#9723;</div>
@@ -133,22 +141,66 @@ export default {
      type: Number,
      //required: true,
    },
+   title: {
+     type: String,
+     //required: true,
+   },
+   windowInnerWidth:{
+    type: Number
+   }
  },
+//  emits: ['update:top'],
+ emits: ['update:left'],
+//  emits: ['update:width'],
+//  emits: ['update:height'],
+//  emits: ['update:minWidth'],
+//  emits: ['update:minHeight'],
+//  emits: ['update:isDragging'],
+//  emits: ['update:isResizing'],
+//  emits: ['update:isActive'],
+//  emits: ['update:isMaximized'],
+//  emits: ['update:maxWidth'],
+//  emits: ['update:maxHeight'],
   data() {
     return {
-   
+      topData:this.top,
+      leftData:this.left,
+      widthData:this.width,
+      heightData:this.height,
+      minWidthData:this.minWidth,
+      minHeightData:this.minHeight,
+      isDraggingData:this.isDragging,
+      isResizingData:this.isResizing,
+      isActiveData:this.isActive,
+      isMaximizedData:this.isMaximized,
+      maxWidthData:this.maxWidth,
+      maxHeightData:this.maxHeight,
+      titleData:this.title,
+      windowInnerWidthData:this.windowInnerWidth
     }
   },
-  mounted: function () {
-    window.onresize = () => {
-      this.loadItems()
+  
+  watch: {
+    windowInnerWidth(newValue, oldValue) {
+      this.windowInnerWidthData=newValue
+      if((this.leftData+this.widthData) > this.windowInnerWidthData){
+       this.leftData = this.windowInnerWidthData - this.widthData
+      }
+
     }
-  },
+
+    },
+
+
   methods: {
-    loadItems() {
-      console.log("RESIZE!!!!")
-      this.left = parseInt(window.innerWidth) - this.width
-      // this.maxHeight = parseInt(window.innerHeight )
+    endDrag(data){
+      console.log(data)
+      this.leftData = data.left
+      
+      // console.log(this.resizeLeft)
+    },
+    endResize(data){
+      this.widthData = data.width
     },
 
     minimize() {
@@ -166,10 +218,13 @@ export default {
       }
     },
     close() {
+      console.log(this.titleData)
       console.log("CALL CLOSE")
     },
 
   }
+
+ 
 
 }
 
