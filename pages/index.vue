@@ -9,22 +9,27 @@
     <WorkSpace />
     <Window v-for="(item, index) in windowItem"  
  
-    :top=item.top
-    :left=item.left
-     :width=item.width
-      :height=item.height
-      :minWidth=item.minWidth
-      :minHeight=item.minHeight
-      :isDragging=item.isDragging
-      :isResizing=item.isResizing
-      :isMaximized=item.isMaximized
-      :maxWidth=item.maxWidth
-      :maxHeight=item.maxHeight
-       :windowId=index
-       :title=item.title
+    v-model:top=item.top
+    v-model:left=item.left
+    v-model:width=item.width
+    v-model:height=item.height
+    v-model:minWidth=item.minWidth
+    v-model:minHeight=item.minHeight
+    v-model:isDragging=item.isDragging
+    v-model:isResizing=item.isResizing
+    v-model:isMaximized=item.isMaximized
+    v-model:maxWidth=item.maxWidth
+    v-model:maxHeight=item.maxHeight
+    v-model:isActive=item.isActive
+    :windowId=index
+    v-model:title=item.title
       :windowInnerWidth="windowInnerWidth" style="position: absolute;"
-      :style="(activeWindowId === index) ? 'z-index:100' : 'z-index-1'" @clickWindow="activeWindow">
-      <AppsBoot />
+      :style="(activeWindowId === index) ? 'z-index:100' : 'z-index:'+index "
+       @clickWindow="activeWindow"
+       @clickDestroy="destroyWindow"
+       >
+      
+       <AppsBoot />
     </Window>
 </div>
  
@@ -58,12 +63,13 @@ body {
 <script>
 import MainBar from "@/components/MainBar";
 export default {
+  
   data() {
     return {
       windowInnerWidth: 0,
       activeWindowId: 0,
       windowItem: {
-        1: {
+        0: {
           top: 20,
           left: 300,
           width: 700,
@@ -72,13 +78,13 @@ export default {
           minHeight: 500,
           isDragging: true,
           isResizing: true,
-          isActive: false,
+          isActive: true,
           isMaximized: false,
           maxWidth: 1000,
           maxHeight: 1000,
           title: "ウィンドウコンポーネント１"
         },
-        2: {
+        1: {
           top: 20,
           left: 900,
           width: 700,
@@ -93,7 +99,7 @@ export default {
           maxHeight: 1000,
           title: "ウィンドウコンポーネント２"
         },
-        3: {
+        2: {
           top: 20,
           left: 100,
           width: 700,
@@ -113,6 +119,7 @@ export default {
     }
   },
   mounted: function () {
+    
     window.onresize = () => {
       this.loadItems()
     }
@@ -125,9 +132,17 @@ export default {
       //  console.log(this.windowInnerWidth)
     },
     activeWindow(data) {
-      console.log(data)
+  
       this.activeWindowId = data;
 
+    },
+    destroyWindow(windowId){
+      // const userState = useUserState();
+      // console.log(userState.value.user)
+  console.log(windowId)
+      this.windowItem[windowId].isActive = false
+
+      console.log(this.windowItem)
     }
   }
 
