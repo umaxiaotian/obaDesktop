@@ -114,6 +114,7 @@ export default {
     data() {
         return {
             window:this.windowItem,
+            activeWindowId:{},
             menuList: {
                 1: {
                     iconSrc: 'computer',
@@ -123,8 +124,8 @@ export default {
                     zindex: 0,
                     top: 400,
                     left: 600,
-                    width: 700,
-                    height: 200,
+                    width:800,
+                    height: 400,
                     minWidth: 500,
                     minHeight: 500,
                     isDragging: true,
@@ -163,8 +164,8 @@ export default {
                     zindex: 0,
                     top: 400,
                     left: 600,
-                    width: 700,
-                    height: 200,
+                    width: 500,
+                    height: 500,
                     minWidth: 500,
                     minHeight: 500,
                     isDragging: true,
@@ -184,14 +185,15 @@ export default {
         menuClickFunc(event) {
          
             if (!this.menuList[event].isActive ) {
-
-
                 this.menuList[event].isActive = true;
+                this.window[event] = this.menuList[event];
 
-   this.window[event] = this.menuList[event];
-
+                //中央再配置処理
+                this.window[event].top =  window.innerHeight /4;
+                this.window[event].left =  window.innerWidth /4;
+                //中央再配置終了
+                this.$emit("activeWindow", event);
             } else {
-
                 this.menuList[event].isActive = false;
             }
             // this.$emit("exec", this.windowIdData);

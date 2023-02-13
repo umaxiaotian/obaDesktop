@@ -1,6 +1,6 @@
 <template>
 
-  <MainBar style="z-index: 1000;" v-model:windowItem="windowItem"/>
+  <MainBar style="z-index: 1000;" v-model:windowItem="windowItem" @activeWindow="activeWindow"/>
   <div style="height: 95%; width: 100%; border: 1px solid red; position: absolute;">
     <div style="position: absolute; color: red;">
       <h1>index.vue LOCAL_STYLE</h1>
@@ -87,7 +87,7 @@ export default {
       this.activeWindowId.forEach((element, index) => {
         this.windowItem[element].zindex = (index)
       });
-
+console.log(this.activeWindowId)
     },
     destroyWindow(windowId) {
       // const userState = useUserState();
