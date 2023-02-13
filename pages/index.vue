@@ -28,7 +28,7 @@ body {
   font-size: 12px;
   color: white;
   //  デスクトップ定義
-  background-image: url("@/assets/image/202300834-Onimai-PC-Wallpaper (1).jpg");
+  background-image: url("@/assets/image/221226a.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
