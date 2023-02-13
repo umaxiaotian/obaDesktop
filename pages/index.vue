@@ -87,15 +87,15 @@ export default {
       this.activeWindowId.forEach((element, index) => {
         this.windowItem[element].zindex = (index)
       });
-console.log(this.activeWindowId)
+// console.log(this.activeWindowId)
     },
     destroyWindow(windowId) {
       // const userState = useUserState();
       // console.log(userState.value.user)
-      console.log(windowId)
+      // console.log(windowId)
       this.windowItem[windowId].isActive = false
 
-      console.log(this.windowItem)
+      // console.log(this.windowItem)
     }
   }
 
