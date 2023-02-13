@@ -1,10 +1,10 @@
 <template>
 
-  <MainBar />
-  <div style="height: 95vh; width: 100wh; border: 1px solid red; position: relative;">
+  <MainBar style="z-index: 1000;" />
+  <div style="height: 95%; width: 100%; border: 1px solid red; position: absolute;">
     <div style="position: absolute; color: red;">
       <h1>index.vue LOCAL_STYLE</h1>
-      <h5>height: 95vh; width: 100wh</h5>
+      <h5>height: 95%; width: 100%</h5>
     </div>
     <WorkSpace />
     <Window v-for="(item, index) in windowItem"  
