@@ -8,7 +8,7 @@
                 style="touch-action: none;">
                 <div class="text-center">
                     <img :src="`/icons/${item.icon}.png`" width="43" height="43"><br>
-                    <span class="text-white text-xs text-center app-name">{{ item.label }}</span>
+                    <span class="app-name " >{{ item.label }}</span>
                 </div>
             </grid-item>
 
@@ -73,24 +73,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.desktop-icons {
-
-    .app {
-        .app-name {
-            color: #fafafa;
+    .app-name {
+            color: #ffffff;
             margin: 4px 0;
-            text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+            text-shadow: 1px 6px 4px rgba(0, 0, 0, 0.6);
         }
-    }
-
-    .vue-grid-item {
-        cursor: auto !important;
-    }
-
-    .vue-grid-item.vue-grid-placeholder {
-        background: #ceceff !important;
-    }
-}
 
 .window-enter,
 .window-leave-to {

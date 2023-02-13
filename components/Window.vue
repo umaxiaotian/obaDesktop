@@ -201,61 +201,61 @@ export default {
     },
       top(newValue, oldValue) {
      this.topData=newValue;
-      this.$emit('update:top', this.topData)
+      //this.$emit('update:top', this.topData)
    },
      left(newValue, oldValue) {
     this.leftData=newValue
-     this.$emit('update:left', this.leftData)
+     //this.$emit('update:left', this.leftData)
    },
      width(newValue, oldValue) {
     this.widthData=newValue
-     this.$emit('update:width', this.widthData)
+     //this.$emit('update:width', this.widthData)
 
    },
      height(newValue, oldValue) {
     this.heightData=newValue
-     this.$emit('update:height', this.heightData)
+     //this.$emit('update:height', this.heightData)
 
    },
      minWidth(newValue, oldValue) {
     this.minWidthData=newValue
-     this.$emit('update:minWidth', this.minWidthData)
+     //this.$emit('update:minWidth', this.minWidthData)
 
    },
     minHeight(newValue, oldValue) {
     this.minHeightData=newValue
-     this.$emit('update:minHeight', this.minHeightpData)
+     //this.$emit('update:minHeight', this.minHeightpData)
 
    },
      isDragging(newValue, oldValue) {
     this.isDraggingData=newValue
-     this.$emit('update:isDragging', this.isDraggingData)
+     //this.$emit('update:isDragging', this.isDraggingData)
 
    },
     isResizing(newValue, oldValue) {
     this.isResizingData=newValue
-     this.$emit('update:isResizing', this.isResizingData)
+     //this.$emit('update:isResizing', this.isResizingData)
 
    },
      isActive(newValue, oldValue) {
-      console.log(newValue+"::非アクティブ")
+    
     this.isActiveData=newValue
-     this.$emit('update:isActive', this.isActiveData)
+     //this.$emit('update:isActive', this.isActiveData)
 
    },
     isMaximized(newValue, oldValue) {
     this.tisMaximizedData=newValue
-     this.$emit('update:isMaximized', this.isMaximizedData)
+     //this.$emit('update:isMaximized', this.isMaximizedData)
 
    },
       maxWidth(newValue, oldValue) {
     this.maxWidthData=newValue
-     this.$emit('update:maxWidth', this.maxWidthData)
+     //this.$emit('update:maxWidth', this.maxWidthData)
 
    },
     maxHeight(newValue, oldValue) {
     this.maxHeightData=newValue
-     this.$emit('update:maxHeight', this.maxHeightData)
+     //this.$emit('update:maxHeight', this.maxHeightData)
    },
    title(newValue, oldValue) {
     this.titleData=newValue
