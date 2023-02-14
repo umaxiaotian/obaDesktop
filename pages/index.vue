@@ -1,7 +1,7 @@
 <template>
 
   <MainBar style="z-index: 1000;" v-model:windowItem="windowItem" @activeWindow="activeWindow"/>
-  <div style="height: 100%; width: 100%; border: 1px solid red; position: absolute;">
+  <div :style="`height: ${displayWindowArea}px; width: 100%; border: 1px solid red; position: absolute;`">
     <div style="position: absolute; color: red;">
       <h1>index.vue LOCAL_STYLE</h1>
       <h5>height: 95%; width: 100%</h5>
@@ -56,6 +56,8 @@ export default {
       windowItem: {
       
       }
+      ,
+      displayWindowArea:0
 
     }
   },
@@ -70,6 +72,7 @@ export default {
     loadItems() {
 
       this.windowInnerWidth = window.innerWidth
+      this.displayWindowArea=window.innerHeight-50
       //  console.log(this.windowInnerWidth)
     },
     activeWindow(data) {

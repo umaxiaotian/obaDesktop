@@ -37,7 +37,7 @@
     width: 100%;
     list-style: none;
     overflow-x: auto;
-
+    
 
 
 }
@@ -64,10 +64,6 @@
     text-decoration: none;
 }
 
-.nav-link {
-    height: 100%;
-}
-
 .nav-link:hover {
     background-color: #3598c2;
 }
@@ -83,7 +79,7 @@
 
     position: absolute;
     bottom: 0rem;
-    z-index: 5;
+
     /* padding: 1rem;   nav太くする用 */
     color: white;
     background: rgba(0, 0, 0, 0.589);
