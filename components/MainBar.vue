@@ -77,8 +77,8 @@
 
 .glass_bar {
 
-    position: absolute;
-    bottom: 0rem;
+    /* position: absolute;
+    bottom: 0rem; */
 
     /* padding: 1rem;   nav太くする用 */
     color: white;
