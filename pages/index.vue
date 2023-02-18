@@ -1,11 +1,14 @@
 <template>
 
   <MainBar style="z-index: 1000;" v-model:windowItem="windowItem" @activeWindow="activeWindow"/>
-  <div :style="`height: ${displayWindowArea}px; width: 100%; border: 3px solid red; position: absolute;`">
-    <div style="position: absolute; color: red;">
+
+
+  <StartMenu  style="z-index: 1001;"/>
+  <div :style="`height: ${displayWindowArea}px; width: 100%; position: absolute;`">
+    <!-- <div style="position: absolute; color: red;">
       <h1>index.vue LOCAL_STYLE</h1>
       <h5>height: {{displayWindowArea}}px width: {{windowInnerWidth}}px</h5>
-    </div>
+    </div> -->
     <WorkSpace />
     <Window v-for="(item, index) in windowItem" v-model:top=item.top v-model:left=item.left v-model:width=item.width
       v-model:height=item.height v-model:minWidth=item.minWidth v-model:minHeight=item.minHeight
@@ -14,7 +17,7 @@
       v-model:title=item.title :windowInnerWidth="windowInnerWidth" style="position: absolute;"
       :style="`z-index:${item.zindex}`" @clickWindow="activeWindow" @clickDestroy="destroyWindow">
 
-      <AppsBoot />
+      <AppsWelcome />
     </Window>
   </div>
 
@@ -28,8 +31,8 @@ body {
   font-size: 12px;
   color: white;
   //  デスクトップ定義
-  background-image: url("@/assets/image/221226a.png");
-  background-position: center center;
+  background-image: url("@/assets/image/milad-fakurian-E8Ufcyxz514-unsplash.jpg");
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;

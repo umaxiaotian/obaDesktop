@@ -48,11 +48,11 @@ export default {
         loadItems() {
             this.updateGrid()
             let items = [
-                { label: 'This PC', icon: 'computer' },
-                { label: 'Recycle Bin', icon: 'trash-empty' },
-                { label: 'File Explorer', icon: 'explorer' },
-                { label: 'Microsoft Store', icon: 'github' },
-                { label: 'Microsoft Edge', icon: 'edge' }
+                { label: 'マイコンピュータ', icon: 'computer' },
+                { label: 'ゴミ箱', icon: 'trash-empty' },
+                { label: 'ファイル', icon: 'explorer' },
+                { label: 'Github', icon: 'github' },
+        
             ]
             for (let i = 0; i < items.length; i++) {
                 items[i].x = parseInt(i / this.rows)

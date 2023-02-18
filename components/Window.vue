@@ -1,25 +1,12 @@
 <template>
-  <vue-resizable
-  v-if="isActiveData"
-   class="terminal" 
-   dragSelector=".toolbar" 
-   :top=topData
-   :left=leftData 
-   :width=widthData :height=heightData
-    :maxWidth=maxWidthData
-     :maxHeight=maxHeightData
-      :min-width=minWidthData 
-      :min-height=minHeightData 
-      :maximize=isMaximizedData
-    :fitParent=true
-    @drag:end="endDrag"
-    @resize:end="endResize"
-    @mousedown="activeMouse"
-  
-    >
-    <div class="toolbar" >
+  <vue-resizable v-if="isActiveData" class="terminal" dragSelector=".toolbar" :top=topData :left=leftData
+    :width=widthData :height=heightData :maxWidth=maxWidthData :maxHeight=maxHeightData :min-width=minWidthData
+    :min-height=minHeightData :maximize=isMaximizedData :fitParent=true @drag:end="endDrag" @resize:end="endResize"
+    @mousedown="activeMouse">
+    
+    <div class="toolbar">
       <div class="icon"></div>
-      <div class="title">{{titleData}}</div>
+      <div class="title">{{ titleData }}</div>
       <div class="buttons">
         <div class="button" @click="minimize">&#9472;</div>
         <div class="button" @click="maximize">&#9723;</div>
@@ -27,6 +14,7 @@
       </div>
     </div>
     <slot />
+
   </vue-resizable>
 </template>
 <style scoped>
@@ -92,225 +80,153 @@
 .close:active {
   background: #8b0a14;
 }
-
-
 </style>
 <script>
 import VueResizable from 'vue-resizable'
 export default {
   components: { VueResizable },
   props: {
-   top: {
-     type: Number,
-     //required: true,
-   },
-   left: {
-     type: Number,
-     //required: true,
-   },
-   width: {
-     type: Number,
-     //required: true,
-   },
-   height: {
-     type: Number,
-     //required: true,
-   },
-   minWidth: {
-     type: Number,
-     //required: true,
-   },
-   minHeight: {
-     type: Number,
-     //required: true,
-   },
-   isDragging: {
-     type: Boolean,
-     //required: true,
-   },
-   isResizing: {
-     type: Boolean,
-     //required: true,
-   },
-   isActive: {
-     type: Boolean,
-     //required: true,
-   },
-   isMaximized: {
-     type: Boolean,
-     //required: true,
-   },
-   maxWidth: {
-     type: Number,
-     //required: true,
-   },
-   maxHeight: {
-     type: Number,
-     //required: true,
-   },
-   title: {
-     type: String,
-     //required: true,
-   },
-   windowInnerWidth:{
-    type: Number
-   },
-   windowId:{
-    type: String
-   }
- },
-
-  data() {
-    return {
-      topData:this.top,
-      leftData:this.left,
-      widthData:this.width,
-      heightData:this.height,
-      minWidthData:this.minWidth,
-      minHeightData:this.minHeight,
-      isDraggingData:this.isDragging,
-      isResizingData:this.isResizing,
-      isActiveData:this.isActive,
-      isMaximizedData:this.isMaximized,
-      maxWidthData:this.maxWidth,
-      maxHeightData:this.maxHeight,
-      titleData:this.title,
-      windowInnerWidthData:this.windowInnerWidth,
-      windowIdData:this.windowId
+    top: {
+      type: Number,
+    },
+    left: {
+      type: Number,
+    },
+    width: {
+      type: Number,
+    },
+    height: {
+      type: Number,
+    },
+    minWidth: {
+      type: Number,
+    },
+    minHeight: {
+      type: Number,
+    },
+    isDragging: {
+      type: Boolean,
+    },
+    isResizing: {
+      type: Boolean,
+    },
+    isActive: {
+      type: Boolean,
+    },
+    isMaximized: {
+      type: Boolean,
+    },
+    maxWidth: {
+      type: Number,
+    },
+    maxHeight: {
+      type: Number,
+    },
+    title: {
+      type: String,
+    },
+    windowInnerWidth: {
+      type: Number
+    },
+    windowId: {
+      type: String
     }
   },
-  
-//  emits: ['update:left', this.leftData],
-//  emits: ['update:width', this.widthData],
-//  emits: ['update:height', this.heightData],
-//  emits: ['update:minWidth', this.minWidthData],
-//  emits: ['update:minHeight', this.minHeightpData],
-//  emits: ['update:isDragging', this.isDraggingData],
-//  emits: ['update:isResizing', this.isResizingData],
-//  emits: ['update:isActive', this.isActiveData],
-//  emits: ['update:isMaximized', this.isMaximizedData],
-//  emits: ['update:maxWidth', this.maxWidthData],
-//  emits: ['update:maxHeight', this.maxHeightData],
+  //値を監視して、双方向通信用の変数へ格納する
   watch: {
-    
-    windowInnerWidth(newValue, oldValue) {
-      this.windowInnerWidthData=newValue
-      if((this.leftData+this.widthData) > this.windowInnerWidthData){
-       this.leftData = this.windowInnerWidthData - this.widthData
+    windowInnerWidth(newValue) {
+      this.windowInnerWidthData = newValue
+      if ((this.leftData + this.widthData) > this.windowInnerWidthData) {
+        this.leftData = this.windowInnerWidthData - this.widthData
       }
     },
-      top(newValue, oldValue) {
-     this.topData=newValue;
-      //this.$emit('update:top', this.topData)
-   },
-     left(newValue, oldValue) {
-    this.leftData=newValue
-     //this.$emit('update:left', this.leftData)
-   },
-     width(newValue, oldValue) {
-    this.widthData=newValue
-     //this.$emit('update:width', this.widthData)
-
-   },
-     height(newValue, oldValue) {
-    this.heightData=newValue
-     //this.$emit('update:height', this.heightData)
-
-   },
-     minWidth(newValue, oldValue) {
-    this.minWidthData=newValue
-     //this.$emit('update:minWidth', this.minWidthData)
-
-   },
-    minHeight(newValue, oldValue) {
-    this.minHeightData=newValue
-     //this.$emit('update:minHeight', this.minHeightpData)
-
-   },
-     isDragging(newValue, oldValue) {
-    this.isDraggingData=newValue
-     //this.$emit('update:isDragging', this.isDraggingData)
-
-   },
-    isResizing(newValue, oldValue) {
-    this.isResizingData=newValue
-     //this.$emit('update:isResizing', this.isResizingData)
-
-   },
-     isActive(newValue, oldValue) {
-    
-    this.isActiveData=newValue
-     //this.$emit('update:isActive', this.isActiveData)
-
-   },
-    isMaximized(newValue, oldValue) {
-    this.tisMaximizedData=newValue
-     //this.$emit('update:isMaximized', this.isMaximizedData)
-
-   },
-      maxWidth(newValue, oldValue) {
-    this.maxWidthData=newValue
-     //this.$emit('update:maxWidth', this.maxWidthData)
-
-   },
-    maxHeight(newValue, oldValue) {
-    this.maxHeightData=newValue
-     //this.$emit('update:maxHeight', this.maxHeightData)
-   },
-   title(newValue, oldValue) {
-    this.titleData=newValue
-
-   },
- 
-   windowId(newValue, oldValue){
-    this.windowIdData=newValue
-
-   }
-
-    
-
+    top(newValue) {
+      this.topData = newValue;
     },
-    mounted(){
-
-      // console.log(this.isActive)
+    left(newValue) {
+      this.leftData = newValue
     },
-
-
+    width(newValue) {
+      this.widthData = newValue
+    },
+    height(newValue) {
+      this.heightData = newValue
+    },
+    minWidth(newValue) {
+      this.minWidthData = newValue
+    },
+    minHeight(newValue) {
+      this.minHeightData = newValue
+    },
+    isDragging(newValue) {
+      this.isDraggingData = newValue
+    },
+    isResizing(newValue) {
+      this.isResizingData = newValue
+    },
+    isActive(newValue) {
+      this.isActiveData = newValue
+    },
+    isMaximized(newValue) {
+      this.tisMaximizedData = newValue
+    },
+    maxWidth(newValue) {
+      this.maxWidthData = newValue
+    },
+    maxHeight(newValue) {
+      this.maxHeightData = newValue
+    },
+    title(newValue) {
+      this.titleData = newValue
+    },
+    windowId(newValue) {
+      this.windowIdData = newValue
+    }
+  }, 
+  data() {
+    return {
+      topData: this.top,
+      leftData: this.left,
+      widthData: this.width,
+      heightData: this.height,
+      minWidthData: this.minWidth,
+      minHeightData: this.minHeight,
+      isDraggingData: this.isDragging,
+      isResizingData: this.isResizing,
+      isActiveData: this.isActive,
+      isMaximizedData: this.isMaximized,
+      maxWidthData: this.maxWidth,
+      maxHeightData: this.maxHeight,
+      titleData: this.title,
+      windowInnerWidthData: this.windowInnerWidth,
+      windowIdData: this.windowId
+    }
+  },
   methods: {
-    endDrag(data){
+    endDrag(data) {
       this.leftData = data.left
-      // console.log(this.resizeLeft)
     },
-    endResize(data){
+    endResize(data) {
       this.widthData = data.width
     },
-
     minimize() {
       console.log("CALL MIN")
     },
-    activeMouse(){
-
-
+    activeMouse() {
       this.$emit("clickWindow", this.windowIdData);
-
     },
     maximize() {
       console.log("CALL MAX")
-      if(this.isMaximizedData){
-      this.isMaximizedData = false
-      }else{
+      if (this.isMaximizedData) {
+        this.isMaximizedData = false
+      } else {
         this.isMaximizedData = true
       }
     },
     close() {
       this.$emit("clickDestroy", this.windowIdData);
     },
-    
-
   }
-
- 
-
 }
 
 
