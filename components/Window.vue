@@ -1,15 +1,18 @@
 <template>
   <vue-resizable v-if="isActiveData" class="terminal" dragSelector=".toolbar" :top=topData :left=leftData
-    :width=widthData :height=heightData :maxWidth=maxWidthData :maxHeight=maxHeightData :min-width=minWidthData
-    :min-height=minHeightData :maximize=isMaximizedData :fitParent=true @drag:end="endDrag" @resize:end="endResize"
-    @mousedown="activeMouse">
+    :width=widthData :height=heightData :maxWidth=maxWidthData :maxHeight=maxHeightData :minWidth=minWidthData
+    :min-height=minHeightData 
+    :active=isResizingData
     
-    <div class="toolbar">
+    :maximize=isMaximizedData :fitParent=true @drag:end="endDrag" @resize:end="endResize"
+    @mousedown="activeMouse">
+
+    <div class="toolbar" :style="`grid-template-columns: 24px 1fr ${buttonAreaWidth}px;`">
       <div class="icon"></div>
       <div class="title">{{ titleData }}</div>
-      <div class="buttons">
-        <div class="button" @click="minimize">&#9472;</div>
-        <div class="button" @click="maximize">&#9723;</div>
+      <div class="buttons" :style="`grid-template-columns: repeat(${buttonsCol}, 1fr);`">
+        <div v-if="isButtonMinimizedData" class="button" @click="minimize">&#9472;</div>
+        <div v-if="isButtonMaximizedData" class="button" @click="maximize">&#9723;</div>
         <div class="button close" @click="close">&#10005;</div>
       </div>
     </div>
@@ -37,7 +40,7 @@
   -webkit-backdrop-filter: blur(5px);
 
   display: grid;
-  grid-template-columns: 24px 1fr 140px;
+
   align-items: center;
   user-select: none;
   padding-left: 4px;
@@ -46,7 +49,7 @@
 .icon {
   width: 16px;
   height: 16px;
-  background-image: url("https://vectorified.com/images/powershell-icon-25.png");
+  background-image: url("/icons/defaultIcon.png");
   background-size: cover;
   justify-self: center;
 }
@@ -54,7 +57,7 @@
 .buttons {
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
 }
 
 .button {
@@ -63,6 +66,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .button:hover {
@@ -130,6 +134,15 @@ export default {
     },
     windowId: {
       type: String
+    },
+    isMaximized: {
+      type: Boolean
+    },
+    isButtonMaximized:{
+      type: Boolean
+    },
+    isButtonMinimized:{
+      type: Boolean
     }
   },
   //値を監視して、双方向通信用の変数へ格納する
@@ -181,8 +194,16 @@ export default {
     },
     windowId(newValue) {
       this.windowIdData = newValue
+    },
+    isButtonMaximized(newValue) {
+      this.isButtonMaximizedData = newValue
+      this.buttonCol()
+    },
+    isButtonMinimized(newValue){
+      this.isButtonMinimizedData = newValue
+      this.buttonCol()
     }
-  }, 
+  },
   data() {
     return {
       topData: this.top,
@@ -199,10 +220,27 @@ export default {
       maxHeightData: this.maxHeight,
       titleData: this.title,
       windowInnerWidthData: this.windowInnerWidth,
-      windowIdData: this.windowId
+      windowIdData: this.windowId,
+      isButtonMaximizedData: this.isButtonMaximized,
+      isButtonMinimizedData:this.isButtonMinimized,
+      buttonsCol: 1,
+      buttonAreaWidth:0
     }
   },
+  mounted(){
+ this.buttonCol()
+  },
   methods: {
+    buttonCol(){
+      this.buttonsCol = 1;
+      if(this.isButtonMaximizedData){
+      this.buttonsCol++;
+    }
+    if(this.isButtonMinimizedData){
+      this.buttonsCol++
+    }
+     this.buttonAreaWidth =(this.buttonsCol * 46.6)
+    },
     endDrag(data) {
       this.leftData = data.left
     },

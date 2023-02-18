@@ -7,11 +7,9 @@
             <div class="navigation">
                 <div style="height: 100%; " v-for="(menu, index) in menuList">
                     <a style=" height: 100%; 
-               
                     display: flex;
   justify-content: center;
   align-items: center;
-  
                     " data-bs-toggle="tooltip" data-bs-placement="top" class='nav-link'
                         :class="{ 'active': menu.isActive === true }" @click="menuClickFunc(index)"
                         :title="menu.toolTipText">
@@ -106,11 +104,12 @@ export default {
                     minWidth: 500,
                     minHeight: 500,
                     isDragging: true,
-                    isResizing: true,
-             
+                    isResizing: false,
                     isMaximized: false,
                     maxWidth: 1000,
                     maxHeight: 1000,
+                    isButtonMaximized:false,
+                    isButtonMinimized:true,
                     title: "ウィンドウコンポーネント１",
                 },
                 2: {
@@ -127,7 +126,8 @@ export default {
                     minHeight: 500,
                     isDragging: true,
                     isResizing: true,
-             
+                    isButtonMaximized:true,
+                    isButtonMinimized:true,
                     isMaximized: false,
                     maxWidth: 1000,
                     maxHeight: 1000,
@@ -147,7 +147,8 @@ export default {
                     minHeight: 500,
                     isDragging: true,
                     isResizing: true,
-           
+                    isButtonMaximized:true,
+                    isButtonMinimized:true,
                     isMaximized: false,
                     maxWidth: 1000,
                     maxHeight: 1000,

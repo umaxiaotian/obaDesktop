@@ -14,7 +14,12 @@
       v-model:height=item.height v-model:minWidth=item.minWidth v-model:minHeight=item.minHeight
       v-model:isDragging=item.isDragging v-model:isResizing=item.isResizing v-model:isMaximized=item.isMaximized
       v-model:maxWidth=item.maxWidth v-model:maxHeight=item.maxHeight v-model:isActive=item.isActive :windowId=index
-      v-model:title=item.title :windowInnerWidth="windowInnerWidth" style="position: absolute;"
+      v-model:title=item.title 
+      :windowInnerWidth="windowInnerWidth" 
+      v-model:isButtonMaximized=item.isButtonMaximized
+      v-model:isButtonMinimized=item.isButtonMinimized
+      
+      style="position: absolute;"
       :style="`z-index:${item.zindex}`" @clickWindow="activeWindow" @clickDestroy="destroyWindow">
 
       <AppsWelcome />
