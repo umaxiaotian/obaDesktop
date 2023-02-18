@@ -22,7 +22,7 @@
       style="position: absolute;"
       :style="`z-index:${item.zindex}`" @clickWindow="activeWindow" @clickDestroy="destroyWindow">
 
-      <AppsWelcome />
+      <component :is=item.showComponents></component>
     </Window>
   </div>
 
@@ -55,7 +55,13 @@ body {
 </style>
 <script>
 import MainBar from "@/components/MainBar";
+
+import AppsWelcome from "@/components/Apps/Welcome.vue"
+import AppsBoot from "@/components/Apps/Boot.vue"
 export default {
+  components:{
+    AppsBoot,AppsWelcome
+  },
 
   data() {
     return {
@@ -65,8 +71,8 @@ export default {
       
       }
       ,
-      displayWindowArea:0
-
+      displayWindowArea:0,
+  
     }
   },
   mounted: function () {

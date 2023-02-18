@@ -109,7 +109,8 @@ export default {
                     maxWidth: 1000,
                     maxHeight: 1000,
                     isButtonMaximized:false,
-                    isButtonMinimized:true,
+                    isButtonMinimized:false,
+                    showComponents:"AppsWelcome",
                     title: "ウィンドウコンポーネント１",
                 },
                 2: {
@@ -131,6 +132,7 @@ export default {
                     isMaximized: false,
                     maxWidth: 1000,
                     maxHeight: 1000,
+                    showComponents:"AppsBoot",
                     title: "ウィンドウコンポーネント２",
                 },
                 3: {
@@ -152,6 +154,7 @@ export default {
                     isMaximized: false,
                     maxWidth: 1000,
                     maxHeight: 1000,
+                    showComponents:"AppsBoot",
                     title: "ウィンドウコンポーネント３",
                 }
             }
