@@ -64,7 +64,7 @@
       }
 
       .carousel-item:nth-child(1) {
-        background-image: url('/wall/desktop-1920x1080.jpg');
+        background-image: url('/wall/5234130.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
