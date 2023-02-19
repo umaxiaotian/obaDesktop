@@ -3,7 +3,7 @@
   <MainBar style="z-index: 1000;" v-model:windowItem="windowItem" @activeWindow="activeWindow"/>
 
 
-  <StartMenu  style="z-index: 1001;"/>
+  <!-- <StartMenu  style="z-index: 1001;"/> -->
   <div :style="`height: ${displayWindowArea}px; width: 100%; position: absolute;`">
     <!-- <div style="position: absolute; color: red;">
       <h1>index.vue LOCAL_STYLE</h1>

@@ -112,7 +112,7 @@ export default {
       type: Boolean,
     },
     isResizing: {
-      type: Boolean,
+      type: Array,
     },
     isActive: {
       type: Boolean,
@@ -240,6 +240,9 @@ export default {
       this.buttonsCol++
     }
      this.buttonAreaWidth =(this.buttonsCol * 46.6)
+
+console.log(this.isResizingData)
+
     },
     endDrag(data) {
       this.leftData = data.left
