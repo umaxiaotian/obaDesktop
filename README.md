@@ -3,7 +3,7 @@
 obaDesktopはウェブ上で動作するデスクトップシステムです。
 バックエンドAPIと通信して、ファイルマネージャーやサーバー管理ができることを目的としています。
 
-![image](https://user-images.githubusercontent.com/29545778/219878209-fc4832ea-b17a-4d25-adc3-43f98b3f4df2.png)
+![image](https://user-images.githubusercontent.com/29545778/220205359-6814c6ba-d305-49fc-b067-cf3046986c7f.png)
 
 
 ## セットアップ
