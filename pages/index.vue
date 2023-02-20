@@ -1,8 +1,54 @@
+<script>
+import { defineComponent, ref } from "@vue/composition-api";
+import MainBar from "@/components/MainBar";
+import AppsWelcome from "@/components/Apps/Welcome.vue";
+import AppsBoot from "@/components/Apps/Boot.vue";
+import { onMounted } from "vue";
+export default defineComponent({
+  components: {
+    AppsBoot,
+    AppsWelcome,
+  },
+  setup(_props, ctx) {
+    const windowInnerWidth = ref(0);
+    const activeWindowId = ref([]);
+    const windowItem = ref({});
+    const displayWindowArea = ref(0);
+    onMounted(() => {
+            loadItems()
+        })
+    const loadItems = () => {
+      windowInnerWidth.value = window.innerWidth;
+      displayWindowArea.value = window.innerHeight - 50;
+      console.log(displayWindowArea.value);
+    };
+    const activeWindow = (data) => {
+      var index = activeWindowId.value.indexOf(data);
+      if (index !== -1) {
+        activeWindowId.value.splice(index, 1);
+      }
+      activeWindowId.value.push(data);
+      activeWindowId.value.forEach((element, index) => {
+        windowItem.value[element].zindex = index;
+      });
+    };
+    const destroyWindow = (windowId) => {
+      windowItem.value[windowId].isActive = false;
+    };
+    return {
+      windowInnerWidth,
+      activeWindowId,
+      windowItem,
+      displayWindowArea,
+      loadItems,
+      activeWindow,
+      destroyWindow,
+    };
+  },
+});
+</script>
 <template>
-
   <MainBar style="z-index: 1000;" v-model:windowItem="windowItem" @activeWindow="activeWindow"/>
-
-
   <!-- <StartMenu  style="z-index: 1001;"/> -->
   <div :style="`height: ${displayWindowArea}px; width: 100%; position: absolute;`">
     <!-- <div style="position: absolute; color: red;">
@@ -53,71 +99,3 @@ body {
   min-height: 100%
 }
 </style>
-<script>
-import MainBar from "@/components/MainBar";
-
-import AppsWelcome from "@/components/Apps/Welcome.vue"
-import AppsBoot from "@/components/Apps/Boot.vue"
-export default {
-  components:{
-    AppsBoot,AppsWelcome
-  },
-
-  data() {
-    return {
-      windowInnerWidth: 0,
-      activeWindowId: [],
-      windowItem: {
-      
-      }
-      ,
-      displayWindowArea:0,
-  
-    }
-  },
-  mounted: function () {
-    this.loadItems()
-    window.onresize = () => {
-      this.loadItems()
-    }
-  },
-
-  methods: {
-    loadItems() {
-
-      this.windowInnerWidth = window.innerWidth
-      this.displayWindowArea=window.innerHeight-50
-
-      console.log(this.displayWindowArea)
-      //  console.log(this.windowInnerWidth)
-    },
-    activeWindow(data) {
-
-      //同一の内容が要素内に入っていたらindexを取得
-      var index = this.activeWindowId.indexOf(data);
-
-      //要素が見つかった時だけ、削除する
-      if (index !== -1) {
-        this.activeWindowId.splice(index, 1)
-      }
-      //同一の内容が要素内に入っていたらindexを取得
-      this.activeWindowId.push(data)
-      //再配置
-      this.activeWindowId.forEach((element, index) => {
-        this.windowItem[element].zindex = (index)
-      });
-// console.log(this.activeWindowId)
-    },
-    destroyWindow(windowId) {
-      // const userState = useUserState();
-      // console.log(userState.value.user)
-      // console.log(windowId)
-      this.windowItem[windowId].isActive = false
-
-      // console.log(this.windowItem)
-    }
-  }
-
-}
-</script>
-  
