@@ -101,24 +101,16 @@
       }
 </style>
   <script>
-import "bootstrap/dist/js/bootstrap.bundle.min.js"
-    export default {
-      data: () => ({
-        cards: ['Today', 'Yesterday'],
-        drawer: null,
-        links: [
-          ['mdi-inbox-arrow-down', 'Inbox'],
-          ['mdi-send', 'Send'],
-          ['mdi-delete', 'Trash'],
-          ['mdi-alert-octagon', 'Spam'],
-        ],
-      }),
-      methods:{
-        neverOpen(){
-            console.log("NEVER OPEN!!")
-        }
-      }
-    }
+import { defineComponent } from "@vue/composition-api";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+export default defineComponent({
+  setup(_props, ctx) {
+    const neverOpen = () => {
+      console.log("NEVER OPEN!!");
+    };
+    return { neverOpen };
+  },
+});
   </script>
   
 

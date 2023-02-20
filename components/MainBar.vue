@@ -1,3 +1,109 @@
+<script>
+import { defineComponent, toRefs, ref, onMounted } from "@vue/composition-api";
+import "bootstrap/dist/js/bootstrap.min.js";
+export default defineComponent({
+    name: "MainBar",
+    props: {
+        windowItem: Object,
+    },
+    setup(props, ctx) {
+        const { windowItem } = toRefs(props);
+        const WindowItems = ref(windowItem.value);
+        const activeWindowId = ref({});
+        const menuList = ref({
+            1: {
+                iconSrc: "computer",
+                isActive: false,
+                funcName: "openEditorInfo",
+                toolTipText:
+                    "ウィンドウコンポーネント１",
+                zindex: 0,
+                top: 400,
+                left: 600,
+                width: 800,
+                height: 400,
+                minWidth: 500,
+                minHeight: 500,
+                isDragging: true,
+                isResizing: [],
+                isMaximized: false,
+                maxWidth: 1000,
+                maxHeight: 1000,
+                isButtonMaximized: false,
+                isButtonMinimized: false,
+                showComponents: "AppsWelcome",
+                title:
+                    "ウィンドウコンポーネント１",
+            },
+            2: {
+                iconSrc: "mail",
+                isActive: false,
+                funcName: "openFileManager",
+                toolTipText:
+                    "ウィンドウコンポーネント２",
+                zindex: 0,
+                top: 400,
+                left: 600,
+                width: 700,
+                height: 200,
+                minWidth: 500,
+                minHeight: 500,
+                isDragging: true,
+                isResizing: ["r", "rb", "b", "lb", "l", "lt", "t", "rt"],
+                isButtonMaximized: true,
+                isButtonMinimized: true,
+                isMaximized: false,
+                maxWidth: 1000,
+                maxHeight: 1000,
+                showComponents: "AppsBoot",
+                title:
+                    "ウィンドウコンポーネント２",
+            },
+            3: {
+                iconSrc: "photos",
+                isActive: false,
+                funcName: "saveEditorInfo",
+                toolTipText:
+                    "ウィンドウコンポーネント３",
+                zindex: 0,
+                top: 400,
+                left: 600,
+                width: 500,
+                height: 500,
+                minWidth: 500,
+                minHeight: 500,
+                isDragging: true,
+                isResizing: ["r", "rb", "b", "lb", "l", "lt", "t", "rt"],
+                isButtonMaximized: true,
+                isButtonMinimized: true,
+                isMaximized: false,
+                maxWidth: 1000,
+                maxHeight: 1000,
+                showComponents: "AppsBoot",
+                title:
+                    "ウィンドウコンポーネント３",
+            },
+        });
+        const menuClickFunc = (windowId) => {
+            if (!menuList.value[windowId].isActive) {
+                menuList.value[windowId].isActive = true;
+                WindowItems.value[windowId] = menuList.value[windowId];
+                WindowItems.value[windowId].top =
+                    (window.innerHeight - WindowItems.value[windowId].height) / 3;
+                WindowItems.value[windowId].left =
+                    (window.innerWidth - WindowItems.value[windowId].width) / 2;
+                ctx.emit("activeWindow", windowId);
+            } else {
+                menuList.value[windowId].isActive = false;
+            }
+        };
+        onMounted(() => {
+            menuClickFunc("1");
+        });
+        return { WindowItems, activeWindowId, menuList, menuClickFunc };
+    },
+});
+</script>
 <template>
     <div class="glass_bar content">
         <nav class="nav navbar-expand ">
@@ -7,10 +113,10 @@
             <div class="navigation">
                 <div style="height: 100%; " v-for="(menu, index) in menuList">
                     <a style=" height: 100%; 
-                    display: flex;
-  justify-content: center;
-  align-items: center;
-                    " data-bs-toggle="tooltip" data-bs-placement="top" class='nav-link'
+                        display: flex;
+      justify-content: center;
+      align-items: center;
+                        " data-bs-toggle="tooltip" data-bs-placement="top" class='nav-link'
                         :class="{ 'active': menu.isActive === true }" @click="menuClickFunc(index)"
                         :title="menu.toolTipText">
                         <!-- <i :class="menu.iconSrc" style="font-size: 1.5rem; color: #ffff;"></i> -->
@@ -22,12 +128,12 @@
         </nav>
     </div>
 </template>
-
 <style  scoped>
 .content {
     width: 100%;
     -webkit-overflow-scrolling: touch;
 }
+
 .navigation {
     display: flex;
     align-items: center;
@@ -35,9 +141,11 @@
     list-style: none;
     overflow-x: auto;
 }
+
 .navigation::-webkit-scrollbar {
     width: 16px;
 }
+
 .navigation::-webkit-scrollbar-track {
     background-color: #777777;
     border-radius: 100px;
@@ -75,111 +183,4 @@
     /* border-top: 1px solid rgba(255, 255, 255, 0.3); */
     /* border-bottom: 1px solid rgba(255, 255, 255, 0.3); */
     border-bottom: 1px solid rgba(255, 255, 255, 0.521);
-}
-</style>
-
-<script>
-import "bootstrap/dist/js/bootstrap.min.js";
-export default {
-    name: "MainBar",
-    //v-model処理
-    props: {
-        windowItem: Object
-    },
-    data() {
-        return {
-            window:this.windowItem,
-            activeWindowId:{},
-            menuList: {
-                1: {
-                    iconSrc: 'computer',
-                    isActive: false,
-                    funcName: 'openEditorInfo',
-                    toolTipText: "エディター情報からデータをアップロードします。",
-                    zindex: 0,
-                    top: 400,
-                    left: 600,
-                    width:800,
-                    height: 400,
-                    minWidth: 500,
-                    minHeight: 500,
-                    isDragging: true,
-                    isResizing: [],
-                    isMaximized: false,
-                    maxWidth: 1000,
-                    maxHeight: 1000,
-                    isButtonMaximized:false,
-                    isButtonMinimized:false,
-                    showComponents:"AppsWelcome",
-                    title: "ウィンドウコンポーネント１",
-                },
-                2: {
-                    iconSrc: 'mail',
-                    isActive: false,
-                    funcName: 'openFileManager',
-                    toolTipText: "ファイルマネージャーを表示します。",
-                    zindex: 0,
-                    top: 400,
-                    left: 600,
-                    width: 700,
-                    height: 200,
-                    minWidth: 500,
-                    minHeight: 500,
-                    isDragging: true,
-                    isResizing: ['r', 'rb', 'b', 'lb', 'l', 'lt', 't', 'rt'],
-                    isButtonMaximized:true,
-                    isButtonMinimized:true,
-                    isMaximized: false,
-                    maxWidth: 1000,
-                    maxHeight: 1000,
-                    showComponents:"AppsBoot",
-                    title: "ウィンドウコンポーネント２",
-                },
-                3: {
-                    iconSrc: 'photos',
-                    isActive: false,
-                    funcName: 'saveEditorInfo',
-                    toolTipText: "エディター情報からデータをダウンロードします。",
-                    zindex: 0,
-                    top: 400,
-                    left: 600,
-                    width: 500,
-                    height: 500,
-                    minWidth: 500,
-                    minHeight: 500,
-                    isDragging: true,
-                    isResizing: ['r', 'rb', 'b', 'lb', 'l', 'lt', 't', 'rt'],
-                    isButtonMaximized:true,
-                    isButtonMinimized:true,
-                    isMaximized: false,
-                    maxWidth: 1000,
-                    maxHeight: 1000,
-                    showComponents:"AppsBoot",
-                    title: "ウィンドウコンポーネント３",
-                }
-            }
-        }
-    },
-
-    mounted() {
-        //起動したらWELCOME画面を表示するようにする
-        this.menuClickFunc('1');
-    },
-
-    methods: {
-        menuClickFunc(windowId) {
-            if (!this.menuList[windowId].isActive ) {
-                this.menuList[windowId].isActive = true;
-                this.window[windowId] = this.menuList[windowId];
-                //中央再配置処理
-                this.window[windowId].top =(  window.innerHeight - this.window[windowId].height )/3;
-                this.window[windowId].left =(  window.innerWidth  - this.window[windowId].width)/2;
-                //中央再配置終了
-                this.$emit("activeWindow", windowId);
-            } else {
-                this.menuList[windowId].isActive = false;
-            }
-        },
-    }
-};
-</script>
+}</style>
